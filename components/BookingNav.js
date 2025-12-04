@@ -7,11 +7,11 @@ export default function BookingNav() {
     const pathname = usePathname();
     return (
       <nav className="flex-col w-full justify-center">
-        <Link href="/type">Type</Link>
-        <Link href="/guests">Gæster</Link>
-        <Link href="/date">Dato</Link>
-        <Link href="/time">Tid</Link>
-        <Link href="/info">Bekræft</Link>
+        <Link href="/booking/type">Type</Link>
+        <Link href="/booking/guests">Gæster</Link>
+        <Link href="/booking/date">Dato</Link>
+        <Link href="/booking/time">Tid</Link>
+        <Link href="/booking/info">Bekræft</Link>
       </nav>
     );
 }
