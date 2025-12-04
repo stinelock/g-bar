@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       >
         <h1>Nav kommer her</h1>
         {children}
-        <h1>footer kommer her</h1>
+        <h2>footer kommer her</h2>
       </body>
     </html>
   );
