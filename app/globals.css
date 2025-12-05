@@ -6,6 +6,7 @@
   --light-purple: #c369df;
   --dark-purple: #660a83;
   --dark-grey: #1e1e1e;
+  --header-font:"'Molend', sans-serif";
 }
 
 @theme inline {
