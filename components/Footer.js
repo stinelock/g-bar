@@ -1,7 +1,46 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import logo from "@/img/logo.png";
+import FaceBook from "@/img/fb.png";
+import Instagram from "@/img/instagram.png";
+
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 bg-dark-grey w-full p-3">
-      <p>© 2025 g-bar. All rights reserved.</p>
+    <footer className="grid grid-rows-2 gap-5 fixed bottom-0 bg-dark-grey w-full h-80 py-8 px-20">
+      <Link href="/">
+        <Image src={logo} alt="G-bar" width="150" height="100"></Image>
+      </Link>
+      <Link href="https://www.google.com/maps/place/GBAR/@56.155149,10.2088994,17z/data=!3m1!4b1!4m6!3m5!1s0x464c3f90e813d1cb:0x6a32849dfa42970d!8m2!3d56.155146!4d10.2114743!16s%2Fg%2F1tdkw8jv?authuser=0&entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D">
+        <address>Skolegade 28, 8000 Aarhus</address>
+      </Link>
+      <div>
+        <h3>Åbningstider</h3>
+        <p>Torsdag: 20:00 - 02:00</p>
+        <p>Fredag: 20:00 - 05:00</p>
+        <p>Lørdag: 20:00 - 05:00</p>
+      </div>
+
+      <div className="flex flex-row">
+        <Link href="https://www.instagram.com/gbaraarhus/?hl=da">
+          <Image
+            src={Instagram}
+            alt="G-bar Instagram"
+            width="50"
+            height="100"
+            className="mr-8"
+          ></Image>
+        </Link>
+        <Link href="https://www.facebook.com/Ilovegbar">
+          <Image
+            src={FaceBook}
+            alt="G-bar Facebook"
+            width="50"
+            height="100"
+            className="mr-8"
+          ></Image>
+        </Link>
+      </div>
     </footer>
   );
 }
