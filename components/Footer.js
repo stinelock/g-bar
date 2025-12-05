@@ -11,7 +11,9 @@ export default function Footer() {
       <Link href="/">
         <Image src={logo} alt="G-bar" width="150" height="100"></Image>
       </Link>
-      <address>Skolegade 28, 8000 Aarhus</address>
+      <Link href="https://www.google.com/maps/place/GBAR/@56.155149,10.2088994,17z/data=!3m1!4b1!4m6!3m5!1s0x464c3f90e813d1cb:0x6a32849dfa42970d!8m2!3d56.155146!4d10.2114743!16s%2Fg%2F1tdkw8jv?authuser=0&entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D">
+        <address>Skolegade 28, 8000 Aarhus</address>
+      </Link>
       <div>
         <h3>Åbningstider</h3>
         <p>Torsdag: 20:00 - 02:00</p>
