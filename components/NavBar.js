@@ -1,27 +1,39 @@
+'use client';
+import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
+import NavLinks from "./NavLinks";
 
 export default function NavBar() {
+   const [isOpen, setIsOpen] = useState(false);
+
+   function handleClick() {
+     setIsOpen((prev) => !prev);
+   }
+
   return (
-    <nav className="bg-dark-grey grid grid-cols-3 p-5 w-screen">
+    <nav className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky">
       <Link href="/" className="col-start-2">
-        <Image src="/img/logo.png" alt="G-bar" width="180" height="100"></Image>
+        <Image
+          src="/img/logo.png"
+          alt="G-bar"
+          width="180"
+          height="100"
+          className="justify-self-center self-center"
+        ></Image>
       </Link>
       <Image
-        src="/img/burgermenu.png"
+        src={isOpen ? "/img/burgerclose.png" : "/img/burgermenu.png"}
         alt="menu"
         width="30"
         height="20"
-        className="justify-self-end"
+        loading="eager"
+        onClick={handleClick}
+        className="justify-self-end md:hidden"
       ></Image>
-      {/* <ul>
-        <li>
-          <Link href="/booking">Book Bord</Link>
-        </li>
-        <li>
-          <Link href="/drinks">Bestil Drinks</Link>
-        </li>
-      </ul> */}
+      <NavLinks isOpen={isOpen} 
+      className="col-start-5"/>
     </nav>
   );
 }
