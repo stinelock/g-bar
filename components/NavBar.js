@@ -13,7 +13,7 @@ export default function NavBar() {
    }
 
   return (
-    <nav className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky">
+    <nav className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky z-10">
       <Link href="/" className="col-start-2">
         <Image
           src="/img/logo.png"
