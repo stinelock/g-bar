@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <h1>Welcome to My Next.js App</h1>
+        <h1 className="">Velkommen til g-bar</h1>
         <p>Home page</p>
       </main>
     </>
