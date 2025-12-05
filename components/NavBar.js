@@ -20,7 +20,7 @@ export default function NavBar() {
           alt="G-bar"
           width="180"
           height="100"
-          className="justify-self-center self-center"
+          className="justify-self-center self-center z-10"
         ></Image>
       </Link>
       <Image
@@ -30,7 +30,7 @@ export default function NavBar() {
         height="20"
         loading="eager"
         onClick={handleClick}
-        className="justify-self-end md:hidden"
+        className="justify-self-end z-10 md:hidden"
       ></Image>
       <NavLinks isOpen={isOpen} 
       className="col-start-5"/>
