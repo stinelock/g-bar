@@ -1,8 +1,11 @@
+import BookingSquare from "@/components/BookingSquare";
+import BookingSquareGrid from "@/components/BookingSquareGrid";
+
 export default function BookingGuests() {
   return (
     <>
-      <main>
-        <h1>Booking Guests Page</h1>
+      <main className="flex justify-center">
+        <BookingSquareGrid />
       </main>
     </>
   );
