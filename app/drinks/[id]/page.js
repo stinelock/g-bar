@@ -1,17 +1,8 @@
 "use client";
 
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get } from "firebase/database";
+import { ref, get } from "firebase/database";
 import { useEffect, useState } from "react";
-
-const firebaseConfig = {
-  databaseURL:
-    "https://g-bar-2d8b9-default-rtdb.europe-west1.firebasedatabase.app",
-};
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
-export { database };
+import { database } from "../../firebaseConfig";
 
 export default function DrinksDetailPage() {
   const [drinks, setDrinks] = useState([]);
