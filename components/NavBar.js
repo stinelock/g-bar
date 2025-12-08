@@ -13,7 +13,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky z-10">
+    <header className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky z-10">
       <Link href="/" className="col-start-2">
         <Image
           src="/img/logo.png"
@@ -32,7 +32,7 @@ export default function NavBar() {
         onClick={handleClick}
         className="justify-self-end z-10 md:hidden"
       ></Image>
-      <NavLinks isOpen={isOpen} className="col-start-5" />
-    </nav>
+      <NavLinks isOpen={isOpen} className="col-start-5 md:col-start-3" />
+    </header>
   );
 }

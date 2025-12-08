@@ -10,12 +10,12 @@ export default function NavLinks({ isOpen }) {
   }
 
   return (
-    <>
+    <nav>
       {/*Mobile version*/}
       <motion.ul
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: isOpen ? "400px" : 0, opacity: isOpen ? 1 : 0 }}
-        className="flex flex-col justify-center text-5xl col-span-3 md:hidden overflow-hidden"
+        className="flex flex-col justify-center text-5xl md:hidden overflow-hidden"
       >
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
@@ -42,7 +42,7 @@ export default function NavLinks({ isOpen }) {
       </motion.ul>
 
       {/*Tablet/Desktop version*/}
-      <ul className="hidden md:flex md:flex-row md:items-center md:justify-end">
+      <ul className="hidden md:flex md:flex-row md:justify-end md:self-end md:h-full md:items-center">
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
             href="/booking"
@@ -64,6 +64,6 @@ export default function NavLinks({ isOpen }) {
           </Link>
         </li>
       </ul>
-    </>
+    </nav>
   );
 }
