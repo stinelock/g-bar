@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState } from "react";
 
 import Link from "next/link";
@@ -6,11 +6,11 @@ import Image from "next/image";
 import NavLinks from "./NavLinks";
 
 export default function NavBar() {
-   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-   function handleClick() {
-     setIsOpen((prev) => !prev);
-   }
+  function handleClick() {
+    setIsOpen((prev) => !prev);
+  }
 
   return (
     <nav className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky z-10">
@@ -32,8 +32,7 @@ export default function NavBar() {
         onClick={handleClick}
         className="justify-self-end z-10 md:hidden"
       ></Image>
-      <NavLinks isOpen={isOpen} 
-      className="col-start-5"/>
+      <NavLinks isOpen={isOpen} className="col-start-5" />
     </nav>
   );
 }
