@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 export default function BookingNav() {
   const pathname = usePathname();
   return (
-    <nav className=" flex flex-row justify-around w-10 h-auto m-4">
+    <nav className=" flex flex-row justify-around w-auto h-auto m-4">
       <Link
         href="/booking/type"
-        className={`px-4 py-2 font-medium transition-all ${
+        className={`pl-4 py-2 font-medium transition-all ${
           pathname === "/booking/type" ? "underline" : ""
         }`}
       >
@@ -17,7 +17,7 @@ export default function BookingNav() {
       </Link>
       <Link
         href="/booking/guests"
-        className={`px-4 py-2 font-medium transition-all ${
+        className={`pl-4 py-2 font-medium transition-all ${
           pathname === "/booking/guests" ? "underline" : ""
         }`}
       >
@@ -25,7 +25,7 @@ export default function BookingNav() {
       </Link>
       <Link
         href="/booking/date"
-        className={`px-4 py-2 font-medium transition-all ${
+        className={`pl-4 py-2 font-medium transition-all ${
           pathname === "/booking/date" ? "underline" : ""
         }`}
       >
@@ -33,7 +33,7 @@ export default function BookingNav() {
       </Link>
       <Link
         href="/booking/time"
-        className={`px-4 py-2 font-medium transition-all ${
+        className={`pl-4 py-2 font-medium transition-all ${
           pathname === "/booking/time" ? "underline" : ""
         }`}
       >
