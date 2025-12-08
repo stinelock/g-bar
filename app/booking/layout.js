@@ -5,6 +5,7 @@ import BookingNav from "@/components/BookingNav";
 export default function Layout({ children }) {
   return (
     <>
+    <BookingNav />
       <div>{children}</div>
     </>
   );
