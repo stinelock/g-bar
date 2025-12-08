@@ -1,9 +1,11 @@
+import BookingCalendar from "@/components/BookingCalendar";
+import Image from "next/image";
+
 export default function BookingDate() {
   return (
-    <>
-      <main>
-        <h1>Booking Date Page</h1>
-      </main>
-    </>
+    <section>
+     
+      <BookingCalendar />
+    </section>
   );
 }

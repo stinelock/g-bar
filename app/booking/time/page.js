@@ -1,9 +1,11 @@
+import BookingSquareGrid from "@/components/BookingSquareGrid";
+
 export default function BookingTime() {
   return (
     <>
-      <main>
-        <h1>Booking Time Page</h1>
-      </main>
+      <section className="flex justify-center">
+        <BookingSquareGrid />
+      </section>
     </>
   );
 }
