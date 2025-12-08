@@ -7,7 +7,7 @@ export default function BookingHeader() {
 
   return (
     <h1 className="text-4xl text-center mb-4 mt-8">
-      {pathname === "/booking/type" && "Vælg Område"}
+      {pathname === "/booking" && "Vælg Område"}
       {pathname === "/booking/guests" && "Vælg antal gæster"}
       {pathname === "/booking/date" && "Vælg Dato"}
       {pathname === "/booking/time" && "Vælg Tidspunkt"}

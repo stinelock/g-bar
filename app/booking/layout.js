@@ -8,7 +8,7 @@ export default function Layout({ children }) {
     <section className="grid grid-cols-1 ">
     <BookingHeader/>
     <BookingNav />
-      <div>{children}</div>
+      <main>{children}</main>
     </section>
   );
 }

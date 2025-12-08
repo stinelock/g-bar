@@ -1,11 +1,10 @@
 import BookingNav from "@/components/BookingNav";
 
-export default function Booking() {
+export default function BookingType() {
   return (
     <>
-      <main className="flex-col">
-        <BookingNav />
-        <h1>Booking page</h1>
+      <main>
+        <h1>Booking Type Page</h1>
       </main>
     </>
   );

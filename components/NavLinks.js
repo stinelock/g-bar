@@ -45,7 +45,7 @@ export default function NavLinks({ isOpen }) {
       <ul className="hidden md:flex md:flex-row md:justify-end md:self-end md:h-full md:items-center">
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
-            href="/booking/type"
+            href="/booking"
             className={`font-medium transition-all hover:underline ${
               pathname === "/booking" ? "underline" : ""
             }`}
