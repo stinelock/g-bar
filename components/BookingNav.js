@@ -8,9 +8,9 @@ export default function BookingNav() {
   return (
     <nav className=" flex flex-row justify-around w-auto max-w-md h-auto m-4 mx-auto">
       <Link
-        href="/booking/type"
+        href="/booking"
         className={`px-4 py-2 font-medium transition-all ${
-          pathname === "/booking/type" ? "underline" : ""
+          pathname === "/booking" ? "underline" : ""
         }`}
       >
         Type
