@@ -5,10 +5,10 @@ import BookingNav from "@/components/BookingNav";
 
 export default function Layout({ children }) {
   return (
-    <>
+    <section className="grid grid-cols-1 ">
     <BookingHeader/>
     <BookingNav />
       <div>{children}</div>
-    </>
+    </section>
   );
 }
