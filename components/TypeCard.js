@@ -1,8 +1,9 @@
 import Image from "next/image";
 
-export default function TypeCard({ type }) {
+export default function TypeCard({ type, onClick }) {
   return (
-    <div className="bg-white w-full h-auto mb-10 p-6 grid grid-cols-1 gap-4 md:max-w-2xl">
+    <div className="bg-white w-full h-auto mb-10 p-6 grid grid-cols-1 gap-4 md:max-w-2xl"
+    onClick={onClick}>
       <div className="w-auto h-auto mb-4 overflow-hidden">
         <Image
           src={type.image}
