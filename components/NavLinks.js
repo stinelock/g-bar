@@ -10,12 +10,12 @@ export default function NavLinks({ isOpen }) {
   }
 
   return (
-    <nav>
+    <nav className="col-span-3 md:col-span-1">
       {/*Mobile version*/}
       <motion.ul
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: isOpen ? "400px" : 0, opacity: isOpen ? 1 : 0 }}
-        className="flex flex-col justify-center text-5xl md:hidden overflow-hidden"
+        className="flex flex-col justify-center col-span-3 text-5xl md:hidden overflow-hidden"
       >
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
@@ -45,7 +45,7 @@ export default function NavLinks({ isOpen }) {
       <ul className="hidden md:flex md:flex-row md:justify-end md:self-end md:h-full md:items-center">
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
-            href="/booking/type"
+            href="/booking"
             className={`font-medium transition-all hover:underline ${
               pathname === "/booking" ? "underline" : ""
             }`}

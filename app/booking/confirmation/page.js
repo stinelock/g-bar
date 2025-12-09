@@ -1,9 +1,10 @@
 export default function BookingConfirmation() {
   return (
-    <>
-      <main>
-        <h1>Booking Confirmation Page</h1>
-      </main>
-    </>
+   <section>
+    <div>
+      <h1>Booking Confirmation</h1>
+      <p>Your booking has been confirmed. Thank you!</p>
+    </div>
+    </section>
   );
 }
