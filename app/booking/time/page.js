@@ -4,7 +4,7 @@ export default function BookingTime() {
   return (
     <>
       <section className="flex justify-center">
-        <BookingSquareGrid />
+        <BookingSquareGrid page="time"/>
       </section>
     </>
   );

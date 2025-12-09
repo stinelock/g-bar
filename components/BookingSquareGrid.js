@@ -46,19 +46,21 @@ export default function BookingSquareGrid({ page }) {
         ))}
       </div>
     );
-
   } else if (page === "time") {
-    const values = [
-      { key: 2, value: 2 },
-      { key: 3, value: 3 },
-      { key: 4, value: 4 },
-      { key: 5, value: 5 },
-      { key: 6, value: 6 },
-      { key: 7, value: 7 },
-      { key: 8, value: 8 },
-      { key: 9, value: 9 },
-      { key: 10, value: 10 },
-    ];
+    const startHour = 19;
+    const endHour = 22;
+    const intervalMinutes = 30;
+
+    const values = [];
+    for (let hour = startHour; hour <= endHour; hour++) {
+      for (let minutes = 0; minutes < 60; minutes += intervalMinutes) {
+        if (hour === endHour && minutes > 0) break; // Stop ved sidste timepunkt (22:00)
+        const timeString = `${hour.toString().padStart(2, "0")}:${minutes
+          .toString()
+          .padStart(2, "0")}`;
+        values.push({ key: timeString, value: timeString });
+      }
+    }
 
     return (
       <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center">

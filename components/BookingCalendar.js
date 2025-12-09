@@ -3,8 +3,11 @@
 import BookingCalendarGrid from "./BookingCalendarGrid";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function BookingCalendar() {
+  const router = useRouter();
+
   const months = [
     "Januar",
     "Februar",
@@ -44,14 +47,19 @@ export default function BookingCalendar() {
     });
   }
 
-  function handleDateSelect({date, day}) {
-    const selectedDate = `${date} ${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+  function handleDateSelect({ date, day }) {
+    const selectedDate = `${date} ${
+      months[currentDate.getMonth()]
+    } ${currentDate.getFullYear()}`;
     const existingBooking = JSON.parse(localStorage.getItem("booking")) || {};
-    const updatedBooking = { ...existingBooking, date: `${day} ${selectedDate}`};
+    const updatedBooking = {
+      ...existingBooking,
+      date: `${day} ${selectedDate}`,
+    };
 
     localStorage.setItem("booking", JSON.stringify(updatedBooking));
 
-    console.log("Valgt dato:", selectedDate);
+    router.push("/booking/time");
   }
 
   const currentMonth = months[currentDate.getMonth()];
