@@ -1,8 +1,26 @@
-'use client';
+"use client"; //Bruger localStorage
 
+import { useRouter } from "next/navigation";
 import BookingSquare from "./BookingSquare";
 
 export default function BookingSquareGrid({ page }) {
+  const router = useRouter();
+
+  function handleSelectedValue(value) {
+    const existingBooking = JSON.parse(localStorage.getItem("booking")) || {};
+    const updatedBooking = { ...existingBooking, [page]: value.value };
+
+    localStorage.setItem("booking", JSON.stringify(updatedBooking));
+
+    console.log(`Selected ${page}:`, value.value);
+
+    if (page === "guests") {
+      router.push("/booking/date");
+    } else if (page === "time") {
+      router.push("/booking/info");
+    }
+  }
+
   if (page === "guests") {
     const values = [
       { key: 2, value: 2 },
@@ -20,10 +38,15 @@ export default function BookingSquareGrid({ page }) {
     return (
       <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center">
         {values.map((guest) => (
-          <BookingSquare key={guest.key} value={guest.value} />
+          <BookingSquare
+            key={guest.key}
+            value={guest.value}
+            onClick={() => handleSelectedValue(guest)}
+          />
         ))}
       </div>
     );
+
   } else if (page === "time") {
     const values = [
       { key: 2, value: 2 },
@@ -39,7 +62,13 @@ export default function BookingSquareGrid({ page }) {
 
     return (
       <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center">
-        {values.map((number) => <BookingSquare key={number.key} value={number.value}/>)}
+        {values.map((time) => (
+          <BookingSquare
+            key={time.key}
+            value={time.value}
+            onClick={() => handleSelectedValue(time)}
+          />
+        ))}
       </div>
     );
   }

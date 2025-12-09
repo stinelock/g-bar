@@ -1,4 +1,6 @@
 export default function BookingCalendarGrid() {
+
+
     return (
       <section className="grid grid-cols-7 gap-2 w-auto h-auto max-w-lg self-center">
         {[...Array(31)].map((_, index) => (
