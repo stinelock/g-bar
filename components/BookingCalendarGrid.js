@@ -6,7 +6,15 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
   };
 
   const daysInMonth = getDaysInMonth(year, month);
-  const weekdays = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"];
+  const weekdays = [
+    "Søndag",
+    "Mandag",
+    "Tirsdag",
+    "Onsdag",
+    "Torsdag",
+    "Fredag",
+    "Lørdag",
+  ];
 
   return (
     <section className="grid grid-cols-7 gap-2 w-auto h-auto max-w-lg self-center">
@@ -16,12 +24,7 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
         const day = weekdays[fullDate.getDay()];
 
         return (
-          <DateSquare
-            key={index}
-            date={date}
-            day={day}
-            onClick={onClick}
-          />
+          <DateSquare key={index} date={date} day={day} onClick={onClick} />
         );
       })}
     </section>
