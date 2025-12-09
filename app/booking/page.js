@@ -21,7 +21,7 @@ const types = [
 ];
 
   return (
-    <section>
+    <section className="md:flex md:flex-row md:justify-center gap-8">
       {types.map((type) => (
         <TypeCard key={type.id} type={type} />
       ))}
