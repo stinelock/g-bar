@@ -13,7 +13,7 @@ export default function BookingInfo() {
         <div>
           <h3>Adresse</h3>
           <p>G-bar</p>
-          <p>Skolegade 28, 8000 Aarhus j</p>
+          <p>Skolegade 28, 8000 Aarhus</p>
         </div>
         <div>
           <h3>Område</h3>
