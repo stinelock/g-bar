@@ -31,7 +31,7 @@ export default function BookingType() {
   };
 
   return (
-    <section className="md:flex md:flex-row md:justify-center gap-8">
+    <section className="md:flex md:flex-row md:justify-center gap-8 md:gap-12">
       {types.map((type) => (
         <TypeCard
           key={type.id}

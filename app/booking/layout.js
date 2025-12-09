@@ -6,7 +6,7 @@ import PreviousButton from "@/components/PreviousButton";
 
 export default function Layout({ children }) {
   return (
-    <section className="grid grid-cols-1 p-8 gap-4">
+    <section className="grid grid-cols-1 p-8 gap-4 md:px-50 md:pb-12">
       <BookingHeader />
       <BookingNav />
       <main>{children}</main>
