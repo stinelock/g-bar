@@ -7,7 +7,6 @@ export default function DrinkCard({ drink, SeMere, TilføjTilKurv }) {
         className="w-32 h-32 object-cover mb-2 rounded"
       />
       <h2 className="text-xl font-bold mb-2">{drink.name}</h2>
-      <p className="mb-1">{drink.description}</p>
       <p className="mb-1">
         <strong>Pris:</strong> {drink.price} DKK
       </p>

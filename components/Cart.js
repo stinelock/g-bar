@@ -1,3 +1,6 @@
+import Notification from "./Notification";
+import { useState } from "react";
+
 export default function Cart({
   kurv,
   visKurv,
@@ -6,8 +9,18 @@ export default function Cart({
   beregnPris,
   tømKurv,
 }) {
+  const [notifikation, setNotifikation] = useState(null);
+
   return (
     <section className="border rounded p-4 bg-white shadow text-black">
+      {notifikation && (
+        <Notification
+          indhold={notifikation.indhold}
+          farve={notifikation.farve}
+          vedLuk={() => setNotifikation(null)}
+        />
+      )}
+
       {/*Kurv knap*/}
       <button
         className="bg-purple-600 text-white rounded px-4 py-2 w-full flex justify-between items-center"
@@ -49,13 +62,6 @@ export default function Cart({
                 </div>
 
                 <button
-                  className="mt-4 px-4 py-2 bg-green-600 text-white rounded w-full"
-                  onClick={() => alert("Ikke sat op endnu")}
-                >
-                  Gå til betaling
-                </button>
-
-                <button
                   className="mt-2 px-4 py-2 bg-red-600 text-white rounded w-full"
                   onClick={tømKurv}
                 >
@@ -65,7 +71,12 @@ export default function Cart({
             )}
             <button
               className="mt-4 px-4 py-2 bg-gray-600 text-white rounded w-full"
-              onClick={() => alert("Ikke sat op endnu")}
+              onClick={() =>
+                setNotifikation({
+                  indhold: `Denne funktion er ikke færdig endnu`,
+                  farve: "bg-red-500",
+                })
+              }
             >
               Gå til betaling
             </button>

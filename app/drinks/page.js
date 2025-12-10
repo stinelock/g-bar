@@ -5,12 +5,14 @@ import { ref, get } from "firebase/database";
 import { database } from "../firebaseConfig";
 import DrinkCard from "../../components/DrinkCard";
 import Cart from "../../components/Cart";
+import Notification from "../../components/Notification";
 
 export default function DrinksPage() {
   const [drinks, setDrinks] = useState([]);
   const [valgteDrink, setValgteDrink] = useState(null);
   const [kurv, setKurv] = useState([]);
   const [visKurv, setVisKurv] = useState(false); // Kurv pop-up
+  const [notifikation, setNotifikation] = useState(null);
 
   useEffect(() => {
     async function fetchDrinks() {
@@ -45,7 +47,10 @@ export default function DrinksPage() {
     const opdaterKurv = [...kurv, drink];
     setKurv(opdaterKurv);
     localStorage.setItem("kurv", JSON.stringify(opdaterKurv));
-    alert(`${drink.name} tilføjet til kurven!`);
+    setNotifikation({
+      message: `${drink.name} tilføjet til kurven!`,
+      farve: "bg-green-600",
+    });
   }
 
   //fjern drink fra kurv
@@ -66,6 +71,13 @@ export default function DrinksPage() {
 
   return (
     <main className="p-8">
+      {notifikation && (
+        <Notification
+          indhold={notifikation.message}
+          farve={notifikation.farve}
+          vedLuk={() => setNotifikation(null)}
+        />
+      )}
       <h1 className="text-3xl mb-8">Drinks Menu</h1>
 
       <Cart
@@ -104,6 +116,7 @@ export default function DrinksPage() {
             />
             <h2 className="text-xl font-bold mb-2">{valgteDrink.name}</h2>
             <p className="mb-1">
+              <p className="mb-1">{valgteDrink.description}</p>
               <strong>Pris:</strong> {valgteDrink.price} DKK
             </p>
             <p className="mb-1">
