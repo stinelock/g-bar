@@ -2,7 +2,8 @@ import BookingCalendar from "@/components/BookingCalendar";
 
 
 export default async function BookingDatePage() {
-  const url =`${process.env.NEXT_PUBLIC_API_URL}/dateCapacity.json`;
+  const url =
+    "https://g-bar-2d8b9-default-rtdb.europe-west1.firebasedatabase.app/dateCapacities.json";
   const res = await fetch(url);
 
   if (!res.ok) {

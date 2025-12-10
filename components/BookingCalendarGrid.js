@@ -23,6 +23,11 @@ export default function BookingCalendarGrid({
 
   const firstDayOfMonth = new Date(year, month, 1).getDay();
 
+  // Funktion til at formatere dato som YYYY-MM-DD
+  const formatDate = (date) => {
+    return date.toISOString().split("T")[0];
+  };
+
   return (
     <section className="grid grid-cols-7 gap-2 w-auto h-auto max-w-lg self-center md:w-auto md:max-w-3xl md:h-auto">
       <p className="text-center">Ma</p>
@@ -44,8 +49,9 @@ export default function BookingCalendarGrid({
       {[...Array(daysInMonth)].map((_, index) => {
         const date = index + 1;
         const fullDate = new Date(year, month, date);
+        const formattedDate = formatDate(fullDate);
         const day = weekdays[fullDate.getDay()];
-        const capacity = dateCapacities[fullDate]?.capacity || 0;
+        const capacity = dateCapacities[formattedDate]?.capacity || 0;
 
         return (
           <DateSquare
