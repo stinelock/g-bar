@@ -6,7 +6,7 @@ export default function DateSquare({ date, day, onClick }) {
   return (
     <div
       className={`h-12 w-auto aspect-square ${
-        isClosed ? "text-black bg-white opacity-30" : "bg-light-purple"
+        isClosed ? "text-black bg-white opacity-30" : "bg-white text-black hover:bg-red-600"
       } flex flex-col items-center justify-center cursor-pointer md:h-20 md:w-auto md:aspect-square`}
       onClick={() => !isClosed && onClick({ date, day })}
     >
