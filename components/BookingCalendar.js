@@ -5,7 +5,7 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function BookingCalendar() {
+export default function BookingCalendar( {dateCapacities} ) {
   const router = useRouter();
 
   const months = [
@@ -92,6 +92,7 @@ export default function BookingCalendar() {
           year={currentYear}
           month={currentDate.getMonth()}
           onClick={handleDateSelect}
+          dateCapacities={dateCapacities}
         />
       </>
   );

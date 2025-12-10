@@ -1,6 +1,11 @@
 import DateSquare from "./DateSquare";
 
-export default function BookingCalendarGrid({ year, month, onClick }) {
+export default function BookingCalendarGrid({
+  year,
+  month,
+  onClick,
+  dateCapacities,
+}) {
   const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
@@ -40,9 +45,17 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
         const date = index + 1;
         const fullDate = new Date(year, month, date);
         const day = weekdays[fullDate.getDay()];
+        const capacity = dateCapacities[fullDate]?.capacity || 0;
 
         return (
-          <DateSquare key={index} date={date} fullDate={fullDate} day={day} onClick={onClick} />
+          <DateSquare
+            key={index}
+            date={date}
+            fullDate={fullDate}
+            day={day}
+            capacity={capacity}
+            onClick={onClick}
+          />
         );
       })}
     </section>
