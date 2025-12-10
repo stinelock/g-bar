@@ -7,14 +7,62 @@ import BookingDetails from "@/components/BookingDetails";
 import BookingForm from "@/components/BookingForm";
 
 export default function BookingInfoPage() {
-const [viewForm, setViewForm] = useState(false);
- 
-  function handleViewForm (){
-   setViewForm(true);
+  const [viewForm, setViewForm] = useState(false);
+  const url = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
+
+  function handleViewForm() {
+    setViewForm(true);
   }
 
-  function handleConfirm(){
-    console.log("Booking confirmed!");
+  function getLocalStorageBooking() {
+     if (typeof window !== "undefined") {
+       const bookingData = localStorage.getItem("booking");
+       return bookingData ? JSON.parse(bookingData) : null;
+     }
+     return null;
+  }
+
+  async function handleConfirm(formData) {
+    const localStoragebooking = getLocalStorageBooking();
+
+    const name = formData.get("name");
+    const phone = formData.get("phone");
+    const email = formData.get("email");
+    const comments = formData.get("comments");
+
+    const newBooking = {
+      ...localStoragebooking,
+      name,
+      phone,
+      email,
+      comments,
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...newBooking,
+          createdAt: new Date().toISOString(), // Tilføj tidsstempel
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Booking gemt:", newBooking);
+        alert("Din booking er blevet gemt!");
+      } else {
+        console.error("Fejl ved gemning af booking");
+        alert(
+          "Der opstod en fejl ved gemning af din booking. Prøv igen senere."
+        );
+      }
+    } catch (error) {
+      console.error("Netværksfejl:", error);
+      alert("Der opstod en netværksfejl. Prøv igen senere.");
+    }
   }
 
   return (
