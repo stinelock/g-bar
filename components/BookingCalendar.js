@@ -47,14 +47,14 @@ export default function BookingCalendar() {
     });
   }
 
-  function handleDateSelect({ date, day }) {
-    const selectedDate = `${date} ${
-      months[currentDate.getMonth()]
-    } ${currentDate.getFullYear()}`;
+  function handleDateSelect({ date, day, fullDate }) {
+    const selectedDate = `${date} ${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+
     const existingBooking = JSON.parse(localStorage.getItem("booking")) || {};
     const updatedBooking = {
       ...existingBooking,
       date: `${day} ${selectedDate}`,
+      fullDate: `${fullDate}`
     };
 
     localStorage.setItem("booking", JSON.stringify(updatedBooking));

@@ -18,7 +18,7 @@ export default function DateSquare({ date, day, onClick, fullDate, capacity }) {
           ? "bg-red-800 text-white hover:bg-red-700"
           : "bg-white text-black hover:bg-red-600"
       } flex flex-col items-center justify-center cursor-pointer md:h-20 md:w-auto md:aspect-square`}
-      onClick={() => !isClosed && !isPastDate && !isFullyBooked && onClick({ date, day })}
+      onClick={() => !isClosed && !isPastDate && !isFullyBooked && onClick({ date, day, fullDate })}
     >
       <span>{date}</span>
     </div>
