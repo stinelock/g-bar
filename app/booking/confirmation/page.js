@@ -1,4 +1,4 @@
-export default function BookingConfirmation() {
+export default function BookingConfirmationPage() {
   return (
    <section>
     <div>

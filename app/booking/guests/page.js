@@ -1,6 +1,6 @@
 import BookingSquareGrid from "@/components/BookingSquareGrid";
 
-export default function BookingGuests() {
+export default function BookingGuestsPage() {
 
   return (
     <section className="flex justify-center">
