@@ -12,12 +12,22 @@
 }
 
 @layer components{
-  .typography {
+
    h1{
-    color: var(--color-light-purple);
+    color: var(--color-white);
    }
 
-  }
+   input{
+    background-color: var(--color-white);
+    color: var(--color-black);
+    padding: 1rem;
+   }
+
+   input:active, input:focus{
+    outline: 3px solid var(--color-light-purple);
+   }
+
+
 }
 
 @media (prefers-color-scheme: dark) {
