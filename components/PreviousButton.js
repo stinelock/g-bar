@@ -8,7 +8,7 @@ export default function PreviousButton() {
   return (
     <button
       onClick={() => Router.back()}
-      className="flex justify-center p-2 mt-4 w-30 border border-white"
+      className="flex justify-center p-2 mt-4 w-30 border md:mt-10 border-white"
     >
       Forrige
     </button>

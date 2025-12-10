@@ -36,6 +36,23 @@ h1 {
     opacity: 1;
     transform: translate(-50%, 0);
   }
+@layer components{
+
+   h1{
+    color: var(--color-white);
+   }
+
+   input{
+    background-color: var(--color-white);
+    color: var(--color-black);
+    padding: 1rem;
+   }
+
+   input:active, input:focus{
+    outline: 3px solid var(--color-light-purple);
+   }
+
+
 }
 
 .animate-fade-in {
