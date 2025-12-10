@@ -17,7 +17,7 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
   ];
 
   return (
-    <section className="grid grid-cols-7 gap-2 w-auto h-auto max-w-lg self-center">
+    <section className="grid grid-cols-7 gap-2 w-auto h-auto max-w-lg self-center md:w-auto md:max-w-3xl md:h-auto">
       {[...Array(daysInMonth)].map((_, index) => {
         const date = index + 1;
         const fullDate = new Date(year, month, date);

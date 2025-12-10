@@ -36,7 +36,7 @@ export default function BookingSquareGrid({ page }) {
     console.log("Rendering BookingSquareGrid for guests");
 
     return (
-      <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center">
+      <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center md:max-w-md">
         {values.map((guest) => (
           <BookingSquare
             key={guest.key}
@@ -63,7 +63,7 @@ export default function BookingSquareGrid({ page }) {
     }
 
     return (
-      <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center">
+      <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center md:max-w-md">
         {values.map((time) => (
           <BookingSquare
             key={time.key}

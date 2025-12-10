@@ -66,33 +66,33 @@ export default function BookingCalendar() {
   const currentYear = currentDate.getFullYear();
 
   return (
-    <section className="grid gap-4 mt-4">
-      <div className="flex flex-row justify-between items-center">
-        <span>
-          <Image
-            src="/img/arrow_back_white.png"
-            alt="Forrige måned"
-            width="20"
-            height="20"
-            onClick={handlePreviousMonth}
-          ></Image>
-        </span>
-        <h2 className="text-3xl">{`${currentMonth} ${currentYear}`}</h2>
-        <span>
-          <Image
-            src="/img/arrow_forward_white.png"
-            alt="Næste måned"
-            width="20"
-            height="20"
-            onClick={handleNextMonth}
-          ></Image>
-        </span>
-      </div>
-      <BookingCalendarGrid
-        year={currentYear}
-        month={currentDate.getMonth()}
-        onClick={handleDateSelect}
-      />
-    </section>
+      <>
+        <div className="flex flex-row justify-between items-center">
+          <span>
+            <Image
+              src="/img/arrow_back_white.png"
+              alt="Forrige måned"
+              width="20"
+              height="20"
+              onClick={handlePreviousMonth}
+            ></Image>
+          </span>
+          <h2 className="text-3xl">{`${currentMonth} ${currentYear}`}</h2>
+          <span>
+            <Image
+              src="/img/arrow_forward_white.png"
+              alt="Næste måned"
+              width="20"
+              height="20"
+              onClick={handleNextMonth}
+            ></Image>
+          </span>
+        </div>
+        <BookingCalendarGrid
+          year={currentYear}
+          month={currentDate.getMonth()}
+          onClick={handleDateSelect}
+        />
+      </>
   );
 }
