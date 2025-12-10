@@ -42,7 +42,7 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
         const day = weekdays[fullDate.getDay()];
 
         return (
-          <DateSquare key={index} date={date} day={day} onClick={onClick} />
+          <DateSquare key={index} date={date} fullDate={fullDate} day={day} onClick={onClick} />
         );
       })}
     </section>

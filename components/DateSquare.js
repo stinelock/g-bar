@@ -1,14 +1,20 @@
-export default function DateSquare({ date, day, onClick }) {
+export default function DateSquare({ date, day, onClick, fullDate }) {
   const closedDays = ["Søndag", "Mandag", "Tirsdag", "Onsdag"];
 
   const isClosed = closedDays.includes(day);
 
+  const today = new Date();
+  const givenDate = new Date(fullDate);
+  const isPastDate = givenDate < today.setHours(0, 0, 0, 0);
+
   return (
     <div
       className={`h-12 w-auto aspect-square ${
-        isClosed ? "text-black bg-white opacity-30" : "bg-white text-black hover:bg-red-600"
+        isClosed || isPastDate
+          ? "text-black bg-white opacity-30"
+          : "bg-white text-black hover:bg-red-600"
       } flex flex-col items-center justify-center cursor-pointer md:h-20 md:w-auto md:aspect-square`}
-      onClick={() => !isClosed && onClick({ date, day })}
+      onClick={() => !isClosed && !isPastDate && onClick({ date, day })}
     >
       <span>{date}</span>
     </div>
