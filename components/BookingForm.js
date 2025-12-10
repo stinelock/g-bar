@@ -17,6 +17,7 @@ export default function FormPost({ action }) {
         aria-label="navn"
         placeholder="Fulde navn"
         defaultValue=""
+        required
       />
       <label htmlFor="phone">Mobil</label>
       <input
@@ -26,7 +27,8 @@ export default function FormPost({ action }) {
         defaultValue=""
         aria-label="telefonnummer"
         placeholder="Telefonnummer"
-        onChange={(event) => setImage(event.target.value)}
+        required
+        // onChange={(event) => setImage(event.target.value)}
       />
       <label htmlFor="email">E-mail</label>
       <input
@@ -36,7 +38,8 @@ export default function FormPost({ action }) {
         defaultValue=""
         aria-label="e-mail"
         placeholder="E-mail"
-        onChange={(event) => setImage(event.target.value)}
+        required
+        // onChange={(event) => setImage(event.target.value)}
       />
       <label htmlFor="comments">Kommentarer</label>
       <input
@@ -46,7 +49,7 @@ export default function FormPost({ action }) {
         defaultValue=""
         aria-label="skriv eventuelle kommentarer"
         placeholder="Skriv eventuelle kommentarer"
-        onChange={(event) => setImage(event.target.value)}
+        // onChange={(event) => setImage(event.target.value)}
       />
       <div className="flex flex-row gap-4 items-center mt-4">
         <input
