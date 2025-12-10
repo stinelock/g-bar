@@ -16,15 +16,21 @@
 }
 
 @layer components {
-  .typography {
-    h1 {
-      color: var(--color-light-purple);
-    }
+  h1 {
+    color: var(--color-white);
+    font-family: "molend", sans-serif;
   }
-}
 
-h1 {
-  font-family: "molend", sans-serif;
+  input {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    padding: 1rem;
+  }
+
+  input:active,
+  input:focus {
+    outline: 3px solid var(--color-light-purple);
+  }
 }
 
 @keyframes fade-in {
