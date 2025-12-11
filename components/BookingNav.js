@@ -9,7 +9,7 @@ export default function BookingNav() {
 if (pathname === "/booking/confirmation") {
     return null; // Skjul navigationen på bekræftelsessiden
   }
-
+  
   return (
     <div className="flex flex-row justify-between w-full max-w-md h-auto mx-auto">
       <Link
