@@ -8,7 +8,7 @@ export default function DrinkCard({ drink, SeMere, TilføjTilKurv }) {
       />
       <h2 className="text-xl font-bold mb-2">{drink.name}</h2>
       <p className="mb-1">
-        <strong>Pris:</strong> {drink.price} DKK
+        <strong>Pris:</strong> {drink.price} Kr
       </p>
       <p className="mb-1">
         <strong>Hovedingredienser:</strong> {drink.mainIngredients.join(", ")}
