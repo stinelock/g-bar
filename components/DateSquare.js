@@ -23,7 +23,7 @@ export default function DateSquare({ date, day, onClick, fullDate, capacity, sel
         isClosed || isPastDate
           ? "text-black bg-white opacity-30"
           : isFullyBooked
-          ? "bg-red-800 text-white hover:bg-red-700"
+          ? "bg-dark-purple text-white hover:bg-red-700"
           : "bg-white text-black"
       } flex flex-col items-center justify-center cursor-pointer md:h-20 md:w-auto md:aspect-square`}
       onClick={() =>
