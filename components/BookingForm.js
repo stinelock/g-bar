@@ -1,10 +1,20 @@
 "use client";
-
-import Image from "next/image";
 import CTAButton from "./CTAButton";
+import { useState } from "react";
 
 export default function FormPost({ action }) {
+    const [emailChecked, setEmailChecked] = useState(false);
+    const [smsChecked, setSmsChecked] = useState(false);
 
+    function handleCheckboxChange (event){
+        const { name, checked } = event.target;
+        
+        if (name === 'confirmationmail') {
+            setEmailChecked(checked);
+        } else if (name === 'confirmationtext') {
+            setSmsChecked(checked);
+        }
+    }
 
   return (
     // Form uses Server Action passed as prop
@@ -27,8 +37,9 @@ export default function FormPost({ action }) {
         defaultValue=""
         aria-label="telefonnummer"
         placeholder="Telefonnummer"
-        required
-        // onChange={(event) => setImage(event.target.value)}
+        minLength={8}
+        maxLength={8}
+        required={smsChecked}
       />
       <label htmlFor="email">E-mail</label>
       <input
@@ -38,8 +49,7 @@ export default function FormPost({ action }) {
         defaultValue=""
         aria-label="e-mail"
         placeholder="E-mail"
-        required
-        // onChange={(event) => setImage(event.target.value)}
+        required={emailChecked}
       />
       <label htmlFor="comments">Kommentarer</label>
       <input
@@ -58,6 +68,7 @@ export default function FormPost({ action }) {
           name="confirmationtext"
           value="SMS"
           className="aspect-square w-8 accent-dark-purple"
+          onChange={handleCheckboxChange}
         />
         <label htmlFor="confirmationtext"> Jeg ønsker bekræftelse på SMS</label>
       </div>
@@ -68,6 +79,7 @@ export default function FormPost({ action }) {
           name="confirmationmail"
           value="Mail"
           className="aspect-square w-8 accent-dark-purple"
+          onChange={handleCheckboxChange}
         />
         <label htmlFor="confirmationmail"> Jeg ønsker bekræftelse på mail</label>
       </div>
