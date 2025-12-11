@@ -49,6 +49,7 @@ export default function DrinksPage() {
   useEffect(() => {
     let gemtKurv = localStorage.getItem("kurv");
     if (gemtKurv) {
+      //eslint-disable-next-line
       setKurv(JSON.parse(gemtKurv));
     }
   }, []);
@@ -90,7 +91,7 @@ export default function DrinksPage() {
           vedLuk={() => setNotifikation(null)}
         />
       )}
-      <h1 className="text-3xl mb-8">Drinks Menu</h1>
+      <h1 className="text-3xl mb-8 font-molend">Drinks Menu</h1>
       {/* Filter*/}
       <Filter
         alleTags={alleTags}

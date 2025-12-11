@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "molend";
-  src: url("/fonts/molend/molendregular.ttf");
+@layer utilities {
+  .font-molend {
+    font-family: "molend", sans-serif;
+  }
 }
 
 @theme inline {
