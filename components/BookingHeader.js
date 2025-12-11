@@ -11,7 +11,7 @@ if (pathname === "/booking/confirmation") {
 }
 
   return (
-    <h1 className="text-4xl text-center m-4">
+    <h1 className="text-2xl text-center">
       {pathname === "/booking" && "Vaelg bordtype"}
       {pathname === "/booking/guests" && "Vaelg antal gaester"}
       {pathname === "/booking/date" && "Vaelg Dato"}
