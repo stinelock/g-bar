@@ -157,7 +157,6 @@ export default function Cart({
                 className="mt-4 px-4 py-2 bg-gray-600 text-white rounded w-full"
                 onClick={() => {
                   window.location.href = "drinks/checkout";
-                  console.log({ gemtKurv });
                 }}
               >
                 Gå til betaling
