@@ -1,5 +1,6 @@
 import Notification from "./Notification";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Cart({
   kurv,
@@ -11,6 +12,7 @@ export default function Cart({
   setKurv,
 }) {
   const [notifikation, setNotifikation] = useState(null);
+  const router = useRouter();
 
   // Group items by id and count quantity
   const gruppeAntal = kurv.reduce((acc, item) => {
@@ -156,7 +158,7 @@ export default function Cart({
               <button
                 className="mt-4 px-4 py-2 bg-gray-600 text-white rounded w-full"
                 onClick={() => {
-                  window.location.href = "drinks/checkout";
+                  router.push("/drinks/checkout");
                 }}
               >
                 Gå til betaling
