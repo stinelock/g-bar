@@ -48,32 +48,31 @@ export default function BookingInfoPage() {
 
     try {
       // 1. Hent kapacitet for den valgte dag
-      const capacityUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/capacities/${selectedDate}.json`;
+      const capacityUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/capacity/${selectedDate}.json`;
       const capacityResponse = await fetch(capacityUrl);
 
       if (!capacityResponse.ok) {
         throw new Error("Kunne ikke hente kapacitet for den valgte dag.");
       }
 
-
-      const currentCapacity = (await capacityResponse.json()) || 0;
-
-            console.log("currentCapacity:", currentCapacity);
-
+      
+      const currentCapacity = await capacityResponse.json();
+  
       if (currentCapacity === null) {
         alert("ingen kapacitet fundet for den valgte dag");
         return;
       }
 
       // 2. Opdater kapaciteten i Firebase
-      const updatedCapacity = currentCapacity - selectedGuests;
+      const capacity = currentCapacity - selectedGuests;
+      
 
       const updatedCapacityResponse = await fetch(capacityUrl, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedCapacity),
+        body: JSON.stringify({capacity}),
       });
 
       if (!updatedCapacityResponse.ok) {
@@ -102,9 +101,9 @@ export default function BookingInfoPage() {
         console.log("Booking gemt:", newBooking);
         alert("Din booking er blevet gemt!");
       } else {
-        console.error("Fejl ved gemning af booking");
+        console.error("Fejl ved oprettelse af booking");
         alert(
-          "Der opstod en fejl ved gemning af din booking. Prøv igen senere."
+          "Der opstod en fejl ved oprettelse af din booking. Prøv igen senere."
         );
       }
     } catch (error) {
