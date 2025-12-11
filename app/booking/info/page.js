@@ -10,7 +10,6 @@ import BookingForm from "@/components/BookingForm";
 export default function BookingInfoPage() {
   const router = useRouter();
   const [viewForm, setViewForm] = useState(false);
-  const bookingUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
 
   function handleViewForm() {
     setViewForm(true);
@@ -56,17 +55,17 @@ export default function BookingInfoPage() {
       if (!capacityResponse.ok) {
         throw new Error("Kunne ikke hente kapacitet for den valgte dag.");
       }
-      
-      const existingData = await capacityResponse.json();
-  
-       if (!existingData) {
-         alert("Ingen data fundet for den valgte dag.");
-         return;
-       }
 
-       const updatedData ={
-          capacity: existingData.capacity - selectedGuests,
-       }
+      const existingData = await capacityResponse.json();
+
+      if (!existingData) {
+        alert("Ingen data fundet for den valgte dag.");
+        return;
+      }
+
+      const updatedData = {
+        capacity: existingData.capacity - selectedGuests,
+      };
 
       // 2. Opdater kapaciteten i Firebase
 
@@ -88,6 +87,8 @@ export default function BookingInfoPage() {
     }
 
     // 3. Gem den nye booking i Firebase
+    const bookingUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
+
     try {
       const response = await fetch(bookingUrl, {
         method: "POST",
@@ -96,25 +97,22 @@ export default function BookingInfoPage() {
         },
         body: JSON.stringify({
           ...newBooking,
-          createdAt: new Date().toISOString(), // Tilføj tidsstempel
+          createdAt: new Date().toISOString(),
         }),
       });
 
       if (response.ok) {
-        console.log("Booking gemt:", newBooking);
-        alert("Din booking er blevet gemt!");
-
+        const bookingId = await response.json();
+        console.log("Booking oprettet med ID:", bookingId);
         localStorage.removeItem("booking");
 
-        router.push("/booking/confirmation");
-
+        router.push(`/booking/confirmation?bookingId=${bookingId.name}`);
       } else {
         console.error("Fejl ved oprettelse af booking");
         alert(
           "Der opstod en fejl ved oprettelse af din booking. Prøv igen senere."
         );
       }
-
     } catch (error) {
       console.error("Netværksfejl:", error);
       alert("Der opstod en netværksfejl. Prøv igen senere.");

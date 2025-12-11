@@ -1,6 +1,16 @@
+import BookingConfirmation from "@/components/BookingConfirmation";
 import Image from "next/image";
 
-export default function BookingConfirmationPage() {
+export default async function BookingConfirmationPage({ searchParams }) {
+const bookingId = await searchParams.bookingId;
+
+const url = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings/${bookingId}.json`;
+const res = await fetch(url);
+
+const bookingData = await res.json();
+
+console.log("Booking data:", bookingData);
+
   return (
     <section>
       <div className="flex flex-row justify-center">
@@ -27,10 +37,8 @@ export default function BookingConfirmationPage() {
           className="w-24 h-auto mt-8 opacity-30 "
         />
       </div>
-      <div className="w-full h-auto p-8 bg-white text-black">
-        <h1 className="text-black">dit bord er booket!</h1>
-        <p>Your booking has been confirmed. Thank you!</p>
-      </div>
+      <BookingConfirmation bookingData={bookingData}/>
+      
     </section>
   );
 }
