@@ -1,6 +1,12 @@
 import DateSquare from "./DateSquare";
 
-export default function BookingCalendarGrid({ year, month, onClick }) {
+export default function BookingCalendarGrid({
+  year,
+  month,
+  onClick,
+  dateCapacities,
+  selectedGuests,
+}) {
   const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
@@ -17,6 +23,15 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
   ];
 
   const firstDayOfMonth = new Date(year, month, 1).getDay();
+
+  // Formater dato som YYYY-MM-DD uden tidszoneforskydning
+ const formatDate = (date) => {
+   // Formatér dato som YYYY-MM-DD uden tidszoneforskydning
+   const year = date.getUTCFullYear();
+   const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+   const day = String(date.getUTCDate()).padStart(2, "0");
+   return `${year}-${month}-${day}`;
+ };
 
   return (
     <section className="grid grid-cols-7 gap-2 w-auto h-auto max-w-lg self-center md:w-auto md:max-w-3xl md:h-auto">
@@ -38,11 +53,23 @@ export default function BookingCalendarGrid({ year, month, onClick }) {
 
       {[...Array(daysInMonth)].map((_, index) => {
         const date = index + 1;
-        const fullDate = new Date(year, month, date);
+       const fullDate = new Date(Date.UTC(year, month, date));
+        const formattedDate = formatDate(fullDate);
         const day = weekdays[fullDate.getDay()];
+        const capacity = dateCapacities[formattedDate]?.capacity || 0;
+
+        console.log(`Date: ${formattedDate}, Capacity: ${capacity}`);
 
         return (
-          <DateSquare key={index} date={date} fullDate={fullDate} day={day} onClick={onClick} />
+          <DateSquare
+            key={index}
+            date={date}
+            fullDate={fullDate}
+            day={day}
+            capacity={capacity}
+            selectedGuests={selectedGuests}
+            onClick={onClick}
+          />
         );
       })}
     </section>

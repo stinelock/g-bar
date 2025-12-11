@@ -1,12 +1,14 @@
-"use client"; // Skal bruge UseState
+"use client"; //skal bruge localStorage og usestate
 
 import BookingCalendarGrid from "./BookingCalendarGrid";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function BookingCalendar() {
+export default function BookingCalendar({ dateCapacities }) {
   const router = useRouter();
+  const [selectedGuests, setSelectedGuests] = useState(0);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const months = [
     "Januar",
@@ -23,7 +25,15 @@ export default function BookingCalendar() {
     "December",
   ];
 
-  const [currentDate, setCurrentDate] = React.useState(new Date());
+  //Bruger useEffect, localStorage.item skal kaldes på client-siden med det samme (uden brugerinteraktion)
+   useEffect(() => {
+     const booking = JSON.parse(localStorage.getItem("booking")) || {};
+
+     //eslint-disable-next-line
+     setSelectedGuests(booking.guests || 0);
+   }, []);
+
+
 
   function handlePreviousMonth() {
     setCurrentDate((prevDate) => {
@@ -47,14 +57,16 @@ export default function BookingCalendar() {
     });
   }
 
-  function handleDateSelect({ date, day }) {
+  function handleDateSelect({ date, day, fullDate }) {
     const selectedDate = `${date} ${
       months[currentDate.getMonth()]
     } ${currentDate.getFullYear()}`;
+
     const existingBooking = JSON.parse(localStorage.getItem("booking")) || {};
     const updatedBooking = {
       ...existingBooking,
       date: `${day} ${selectedDate}`,
+      fullDate: `${fullDate}`,
     };
 
     localStorage.setItem("booking", JSON.stringify(updatedBooking));
@@ -66,33 +78,35 @@ export default function BookingCalendar() {
   const currentYear = currentDate.getFullYear();
 
   return (
-      <>
-        <div className="flex flex-row justify-between items-center">
-          <span>
-            <Image
-              src="/img/arrow_back_white.png"
-              alt="Forrige måned"
-              width="20"
-              height="20"
-              onClick={handlePreviousMonth}
-            ></Image>
-          </span>
-          <h2 className="text-3xl">{`${currentMonth} ${currentYear}`}</h2>
-          <span>
-            <Image
-              src="/img/arrow_forward_white.png"
-              alt="Næste måned"
-              width="20"
-              height="20"
-              onClick={handleNextMonth}
-            ></Image>
-          </span>
-        </div>
-        <BookingCalendarGrid
-          year={currentYear}
-          month={currentDate.getMonth()}
-          onClick={handleDateSelect}
-        />
-      </>
+    <>
+      <div className="flex flex-row justify-between items-center">
+        <span>
+          <Image
+            src="/img/arrow_back_white.png"
+            alt="Forrige måned"
+            width="20"
+            height="20"
+            onClick={handlePreviousMonth}
+          ></Image>
+        </span>
+        <h2 className="text-3xl">{`${currentMonth} ${currentYear}`}</h2>
+        <span>
+          <Image
+            src="/img/arrow_forward_white.png"
+            alt="Næste måned"
+            width="20"
+            height="20"
+            onClick={handleNextMonth}
+          ></Image>
+        </span>
+      </div>
+      <BookingCalendarGrid
+        year={currentYear}
+        month={currentDate.getMonth()}
+        onClick={handleDateSelect}
+        dateCapacities={dateCapacities}
+        selectedGuests={selectedGuests}
+      />
+    </>
   );
 }
