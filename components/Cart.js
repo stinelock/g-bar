@@ -8,9 +8,46 @@ export default function Cart({
   fjernFraKurv,
   beregnPris,
   tømKurv,
+  setKurv,
 }) {
   const [notifikation, setNotifikation] = useState(null);
 
+  // Group items by id and count quantity
+  const gruppeAntal = kurv.reduce((acc, item) => {
+    const found = acc.find((i) => i.id === item.id);
+    if (found) {
+      found.quantity += 1;
+    } else {
+      acc.push({ ...item, quantity: 1 });
+    }
+    return acc;
+  }, []);
+
+  // Add one more of an item
+  function tilføjTilKurv(id) {
+    const item = kurv.find((i) => i.id === id);
+    if (item) {
+      const newKurv = [...kurv, item];
+      setKurv(newKurv);
+      localStorage.setItem("kurv", JSON.stringify(newKurv));
+    }
+  }
+
+  function fjernFraKurv(id) {
+    const idx = kurv.findIndex((i) => i.id === id);
+    if (idx !== -1) {
+      const newKurv = [...kurv];
+      newKurv.splice(idx, 1);
+      setKurv(newKurv);
+      localStorage.setItem("kurv", JSON.stringify(newKurv));
+    }
+  }
+
+  function fjernAlleFraKurv(id) {
+    const newKurv = kurv.filter((item) => item.id !== id);
+    setKurv(newKurv);
+    localStorage.setItem("kurv", JSON.stringify(newKurv));
+  }
   return (
     <section className="border rounded p-4 bg-white shadow text-black">
       {notifikation && (
@@ -33,26 +70,41 @@ export default function Cart({
         <section className="">
           <div className="mt-4 mb-2">
             <h2 className="text-2xl mb-4">Din Kurv</h2>
-            {kurv.length === 0 ? (
+            {gruppeAntal.length === 0 ? (
               <p>Kurven er tom</p>
             ) : (
               <>
                 <ul>
-                  {kurv.map((item, index) => (
+                  {gruppeAntal.map((item) => (
                     <li
-                      key={index}
+                      key={item.id}
                       className="mb-2 border-b pb-2 flex justify-between items-center"
                     >
                       <div>
                         <p className="font-bold">{item.name}</p>
                         <p className="text-sm font-semibold">{item.price} Kr</p>
                       </div>
-                      <button
-                        className="text-red-600 text-sm"
-                        onClick={() => fjernFraKurv(index)}
-                      >
-                        Fjern
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          className="bg-gray-200 px-2 rounded text-lg"
+                          onClick={() => fjernFraKurv(item.id)}
+                        >
+                          -
+                        </button>
+                        <span className="font-bold">{item.quantity}</span>
+                        <button
+                          className="bg-gray-200 px-2 rounded text-lg"
+                          onClick={() => tilføjTilKurv(item.id)}
+                        >
+                          +
+                        </button>
+                        <button
+                          className="text-red-600 text-sm ml-2"
+                          onClick={() => fjernAlleFraKurv(item.id)}
+                        >
+                          Fjern
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>
