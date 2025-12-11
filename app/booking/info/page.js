@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import BookingDetails from "@/components/BookingDetails";
 import BookingForm from "@/components/BookingForm";
 
 export default function BookingInfoPage() {
+  const router = useRouter();
   const [viewForm, setViewForm] = useState(false);
   const bookingUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
 
@@ -54,25 +56,26 @@ export default function BookingInfoPage() {
       if (!capacityResponse.ok) {
         throw new Error("Kunne ikke hente kapacitet for den valgte dag.");
       }
-
       
-      const currentCapacity = await capacityResponse.json();
+      const existingData = await capacityResponse.json();
   
-      if (currentCapacity === null) {
-        alert("ingen kapacitet fundet for den valgte dag");
-        return;
-      }
+       if (!existingData) {
+         alert("Ingen data fundet for den valgte dag.");
+         return;
+       }
+
+       const updatedData ={
+          capacity: existingData.capacity - selectedGuests,
+       }
 
       // 2. Opdater kapaciteten i Firebase
-      const capacity = currentCapacity - selectedGuests;
-      
 
       const updatedCapacityResponse = await fetch(capacityUrl, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({capacity}),
+        body: JSON.stringify(updatedData),
       });
 
       if (!updatedCapacityResponse.ok) {
@@ -100,12 +103,18 @@ export default function BookingInfoPage() {
       if (response.ok) {
         console.log("Booking gemt:", newBooking);
         alert("Din booking er blevet gemt!");
+
+        localStorage.removeItem("booking");
+
+        router.push("/booking/confirmation");
+
       } else {
         console.error("Fejl ved oprettelse af booking");
         alert(
           "Der opstod en fejl ved oprettelse af din booking. Prøv igen senere."
         );
       }
+
     } catch (error) {
       console.error("Netværksfejl:", error);
       alert("Der opstod en netværksfejl. Prøv igen senere.");
