@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import BookingDetails from "@/components/BookingDetails";
 import BookingForm from "@/components/BookingForm";
 
 export default function BookingInfoPage() {
+  const router = useRouter();
   const [viewForm, setViewForm] = useState(false);
-  const bookingUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
 
   function handleViewForm() {
     setViewForm(true);
@@ -55,24 +56,25 @@ export default function BookingInfoPage() {
         throw new Error("Kunne ikke hente kapacitet for den valgte dag.");
       }
 
-      
-      const currentCapacity = await capacityResponse.json();
-  
-      if (currentCapacity === null) {
-        alert("ingen kapacitet fundet for den valgte dag");
+      const existingData = await capacityResponse.json();
+
+      if (!existingData) {
+        alert("Ingen data fundet for den valgte dag.");
         return;
       }
 
+      const updatedData = {
+        capacity: existingData.capacity - selectedGuests,
+      };
+
       // 2. Opdater kapaciteten i Firebase
-      const capacity = currentCapacity - selectedGuests;
-      
 
       const updatedCapacityResponse = await fetch(capacityUrl, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({capacity}),
+        body: JSON.stringify(updatedData),
       });
 
       if (!updatedCapacityResponse.ok) {
@@ -85,6 +87,8 @@ export default function BookingInfoPage() {
     }
 
     // 3. Gem den nye booking i Firebase
+    const bookingUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
+
     try {
       const response = await fetch(bookingUrl, {
         method: "POST",
@@ -93,13 +97,16 @@ export default function BookingInfoPage() {
         },
         body: JSON.stringify({
           ...newBooking,
-          createdAt: new Date().toISOString(), // Tilføj tidsstempel
+          createdAt: new Date().toISOString(),
         }),
       });
 
       if (response.ok) {
-        console.log("Booking gemt:", newBooking);
-        alert("Din booking er blevet gemt!");
+        const bookingId = await response.json();
+        console.log("Booking oprettet med ID:", bookingId);
+        localStorage.removeItem("booking");
+
+        router.push(`/booking/confirmation?bookingId=${bookingId.name}`);
       } else {
         console.error("Fejl ved oprettelse af booking");
         alert(
