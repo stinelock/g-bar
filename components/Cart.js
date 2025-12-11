@@ -1,6 +1,7 @@
 import Notification from "./Notification";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { pathname } from "next/navigation";
 
 export default function Cart({
   kurv,
@@ -51,7 +52,7 @@ export default function Cart({
     localStorage.setItem("kurv", JSON.stringify(newKurv));
   }
 
-  if (window.location.pathname === "/drinks/checkout") {
+  if (pathname === "/drinks/checkout") {
     return (
       <section>
         <div className="mt-4 mb-2">
