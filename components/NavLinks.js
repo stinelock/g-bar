@@ -22,7 +22,14 @@ export default function NavLinks({ isOpen }) {
             href="/booking"
             onClick={handleMenuClose}
             className={`font-medium transition-all hover:underline ${
-              pathname === "/booking" ? "underline" : ""
+              pathname === "/booking" ||
+              "/booking/info" ||
+              "/booking/date" ||
+              "/booking/time" ||
+              "/booking/guests" ||
+              "/booking/confirmation"
+                ? "underline"
+                : ""
             }`}
           >
             Book Bord

@@ -15,8 +15,6 @@ export default function DateSquare({ date, day, onClick, fullDate, capacity, sel
 
   const isFullyBooked = capacity <= 0 || capacity < selectedGuests;
 
-    console.log(`DateSquare - Date: ${date}, Day: ${day}, FullDate: ${fullDate}, Capacity: ${capacity}, SelectedGuests: ${selectedGuests}`);
-
   return (
     <div
       className={`h-12 w-auto aspect-square ${

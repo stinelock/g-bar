@@ -11,11 +11,11 @@ if (pathname === "/booking/confirmation") {
 }
 
   return (
-    <h1 className="text-4xl text-center m-4">
-      {pathname === "/booking" && "Vælg Område"}
-      {pathname === "/booking/guests" && "Vælg antal gæster"}
-      {pathname === "/booking/date" && "Vælg Dato"}
-      {pathname === "/booking/time" && "Vælg Tidspunkt"}
+    <h1 className="text-2xl text-center">
+      {pathname === "/booking" && "Vaelg bordtype"}
+      {pathname === "/booking/guests" && "Vaelg antal gaester"}
+      {pathname === "/booking/date" && "Vaelg Dato"}
+      {pathname === "/booking/time" && "Vaelg Tidspunkt"}
       {pathname === "/booking/info" && "Bekraeft Booking"}
     </h1>
   );
