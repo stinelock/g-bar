@@ -8,18 +8,18 @@ import BookingForm from "@/components/BookingForm";
 
 export default function BookingInfoPage() {
   const [viewForm, setViewForm] = useState(false);
-  const url = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
+  const bookingUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/bookings.json`;
 
   function handleViewForm() {
     setViewForm(true);
   }
 
   function getLocalStorageBooking() {
-     if (typeof window !== "undefined") {
-       const bookingData = localStorage.getItem("booking");
-       return bookingData ? JSON.parse(bookingData) : null;
-     }
-     return null;
+    if (typeof window !== "undefined") {
+      const bookingData = localStorage.getItem("booking");
+      return bookingData ? JSON.parse(bookingData) : null;
+    }
+    return null;
   }
 
   async function handleConfirm(formData) {
@@ -38,8 +38,56 @@ export default function BookingInfoPage() {
       comments,
     };
 
+    const selectedDate = localStoragebooking?.formattedDate;
+    const selectedGuests = localStoragebooking?.guests;
+
+    if (!selectedDate) {
+      alert("ingen date fundet");
+      return;
+    }
+
     try {
-      const response = await fetch(url, {
+      // 1. Hent kapacitet for den valgte dag
+      const capacityUrl = `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/capacities/${selectedDate}.json`;
+      const capacityResponse = await fetch(capacityUrl);
+
+      if (!capacityResponse.ok) {
+        throw new Error("Kunne ikke hente kapacitet for den valgte dag.");
+      }
+
+
+      const currentCapacity = (await capacityResponse.json()) || 0;
+
+            console.log("currentCapacity:", currentCapacity);
+
+      if (currentCapacity === null) {
+        alert("ingen kapacitet fundet for den valgte dag");
+        return;
+      }
+
+      // 2. Opdater kapaciteten i Firebase
+      const updatedCapacity = currentCapacity - selectedGuests;
+
+      const updatedCapacityResponse = await fetch(capacityUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedCapacity),
+      });
+
+      if (!updatedCapacityResponse.ok) {
+        throw new Error("Kunne ikke opdatere kapacitet i Firebase");
+      }
+    } catch (error) {
+      console.error("Fejl:", error);
+      alert("Der opstod en fejl. Prøv igen senere.");
+      return;
+    }
+
+    // 3. Gem den nye booking i Firebase
+    try {
+      const response = await fetch(bookingUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -57,7 +57,7 @@ export default function BookingCalendar({ dateCapacities }) {
     });
   }
 
-  function handleDateSelect({ date, day, fullDate }) {
+  function handleDateSelect({ date, day, fullDate, formattedDate }) {
     const selectedDate = `${date} ${
       months[currentDate.getMonth()]
     } ${currentDate.getFullYear()}`;
@@ -67,6 +67,7 @@ export default function BookingCalendar({ dateCapacities }) {
       ...existingBooking,
       date: `${day} ${selectedDate}`,
       fullDate: `${fullDate}`,
+      formattedDate: `${formattedDate}`,
     };
 
     localStorage.setItem("booking", JSON.stringify(updatedBooking));

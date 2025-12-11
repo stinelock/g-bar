@@ -31,7 +31,7 @@ export default function BookingDetails({}) {
       </div>
       <div>
         <h3>Område</h3>
-        <p>{currentBooking.type?.name}</p>
+        <p>{currentBooking.type}</p>
       </div>
       <div>
         <h3>Antal gæster</h3>
