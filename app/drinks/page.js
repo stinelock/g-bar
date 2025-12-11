@@ -6,6 +6,7 @@ import { database } from "../firebaseConfig";
 import DrinkCard from "../../components/DrinkCard";
 import Cart from "../../components/Cart";
 import Notification from "../../components/Notification";
+import Filter from "../../components/filter";
 
 export default function DrinksPage() {
   const [drinks, setDrinks] = useState([]);
@@ -13,6 +14,17 @@ export default function DrinksPage() {
   const [kurv, setKurv] = useState([]);
   const [visKurv, setVisKurv] = useState(false); // Kurv pop-up
   const [notifikation, setNotifikation] = useState(null);
+  const [valgteTags, setValgteTags] = useState([]); // filter tags
+  const alleTags = Array.from(
+    new Set(drinks.flatMap((drink) => drink.tags || []))
+  ); // alle tags
+
+  const filteredeDrinks =
+    valgteTags.length === 0
+      ? drinks
+      : drinks.filter((drink) =>
+          valgteTags.every((tag) => drink.tags && drink.tags.includes(tag))
+        );
 
   useEffect(() => {
     async function fetchDrinks() {
@@ -79,6 +91,12 @@ export default function DrinksPage() {
         />
       )}
       <h1 className="text-3xl mb-8">Drinks Menu</h1>
+      {/* Filter*/}
+      <Filter
+        alleTags={alleTags}
+        valgteTags={valgteTags}
+        setValgteTags={setValgteTags}
+      />
 
       <Cart
         kurv={kurv}
@@ -87,9 +105,10 @@ export default function DrinksPage() {
         fjernFraKurv={fjernFraKurv}
         beregnPris={beregnPris}
         tømKurv={tømKurv}
+        setKurv={setKurv}
       />
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {drinks.map((drink) => (
+        {filteredeDrinks.map((drink) => (
           <DrinkCard
             key={drink.id}
             drink={drink}
