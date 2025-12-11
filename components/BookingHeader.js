@@ -5,6 +5,11 @@ import { usePathname } from "next/navigation";
 export default function BookingHeader() {
   const pathname = usePathname();
 
+
+if (pathname === "/booking/confirmation") {
+  return null;
+}
+
   return (
     <h1 className="text-4xl text-center m-4">
       {pathname === "/booking" && "Vælg Område"}

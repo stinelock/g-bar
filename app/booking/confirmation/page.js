@@ -1,4 +1,5 @@
 import BookingConfirmation from "@/components/BookingConfirmation";
+import CTAButton from "@/components/CTAButton";
 import Image from "next/image";
 
 export default async function BookingConfirmationPage({ searchParams }) {
@@ -43,24 +44,29 @@ export default async function BookingConfirmationPage({ searchParams }) {
           width="50"
           height="50"
           loading="eager"
-          className="w-24 h-auto mt-8 opacity-30 "
+          className="w-24 h-auto opacity-30 "
         />
         <Image
           src="/img/silhouette2-w.png"
           alt="dansende silhouette"
           width="50"
           height="50"
-          className="w-24 h-auto mt-8 opacity-30 "
+          className="w-24 h-auto opacity-30 "
         />
         <Image
           src="/img/silhouette3-w.png"
           alt="dansende silhouette"
           width="50"
           height="50"
-          className="w-24 h-auto mt-8 opacity-30 "
+          className="w-24 h-auto opacity-30 "
         />
       </div>
       <BookingConfirmation bookingData={bookingData} />
+      <div>
+        <p>Det er forbudt at medbringe væske og umarkeret medicin</p>
+        <p>Medbring relevant ID da du vil blive tjekket i døren.</p>
+      </div>
+      <CTAButton text="Tilbage til forsiden" link="/" />
     </section>
   );
 }

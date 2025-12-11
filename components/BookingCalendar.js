@@ -58,7 +58,7 @@ export default function BookingCalendar({ dateCapacities }) {
   }
 
   function handleDateSelect({ date, day, fullDate, formattedDate }) {
-    const selectedDate = `${date} ${
+    const selectedDate = `${date}. ${
       months[currentDate.getMonth()]
     } ${currentDate.getFullYear()}`;
 
