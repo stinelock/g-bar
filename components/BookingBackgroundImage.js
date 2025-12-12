@@ -9,7 +9,7 @@ export default function BookingBackgroundImage() {
     "/booking": "/img/silhouette1-w.png",
     "/booking/guests": "/img/silhouette2-w.png",
     "/booking/date": "/img/silhouette3-w.png",
-    "/booking/time": "/img/silhouette1-w.png", 
+    "/booking/time": "/img/silhouette1-w.png",
     "/booking/info": "/img/silhouette2-w.png",
   };
 
@@ -20,13 +20,13 @@ export default function BookingBackgroundImage() {
   }
 
   return (
-    <div className="w-screen h-screen overflow-hidden fixed left-0 bottom-0 z-0">
+    <div className="w-screen h-screen fixed overflow-hidden bottom-0 z-0 md:absolute md:w-auto md:h-5/6 md:bottom-0 md:right-30">
       <Image
         src={currentImage}
         alt="dansende silhouette"
         width="100"
         height="100"
-        className="z-0 opacity-10 top-30 relative w-screen md:top-32 md:left-16"
+        className="z-0 opacity-10 top-30 relative w-screen md:h-full md:w-full md:right-0 md:top-0"
       />
     </div>
   );
