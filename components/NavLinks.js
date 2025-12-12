@@ -5,6 +5,17 @@ import { usePathname } from "next/navigation";
 export default function NavLinks({ isOpen }) {
   const pathname = usePathname();
 
+  const bookingPaths = [
+    "/booking",
+    "/booking/info",
+    "/booking/date",
+    "/booking/time",
+    "/booking/guests",
+    "/booking/confirmation",
+  ];
+
+  const isBookingPath = bookingPaths.includes(pathname);
+
   function handleMenuClose() {
     setisOpen(false);
   }
@@ -22,14 +33,7 @@ export default function NavLinks({ isOpen }) {
             href="/booking"
             onClick={handleMenuClose}
             className={`font-medium transition-all hover:underline ${
-              pathname === "/booking" ||
-              "/booking/info" ||
-              "/booking/date" ||
-              "/booking/time" ||
-              "/booking/guests" ||
-              "/booking/confirmation"
-                ? "underline"
-                : ""
+             isBookingPath ? "underline" : ""
             }`}
           >
             Book Bord
@@ -54,7 +58,7 @@ export default function NavLinks({ isOpen }) {
           <Link
             href="/booking"
             className={`font-medium transition-all hover:underline ${
-              pathname === "/booking" ? "underline" : ""
+              isBookingPath ? "underline" : ""
             }`}
           >
             Book Bord

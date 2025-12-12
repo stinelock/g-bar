@@ -11,7 +11,7 @@ if (pathname === "/booking/confirmation") {
   }
   
   return (
-    <div className="flex flex-row justify-between w-full max-w-md h-auto mx-auto">
+    <div className="flex flex-row justify-between w-full max-w-md h-auto mx-auto z-1">
       <Link
         href="/booking"
         className={`py-2 font-medium transition-all ${
