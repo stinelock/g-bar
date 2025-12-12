@@ -6,14 +6,28 @@ import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import BookingDetails from "@/components/BookingDetails";
 import BookingForm from "@/components/BookingForm";
+import Notification from "@/components/Notification";
 
 export default function BookingInfoPage() {
   const router = useRouter();
   const [viewForm, setViewForm] = useState(false);
+  const [notification, setNotification] = useState(null);
 
   function handleViewForm() {
     setViewForm(true);
   }
+
+  function handleLoginClick (){
+    console.log("Login forsøg");
+    setNotification({
+      message: "Du kan desværre ikke logge ind endnu. Fortsæt som gæst.",
+      farve: "bg-red-500",
+    });
+     console.log("Notifikation sat:", {
+       message: "Du kan desværre ikke logge ind endnu. Fortsæt som gæst.",
+       farve: "bg-red-500",
+     });
+  } 
 
   function getLocalStorageBooking() {
     if (typeof window !== "undefined") {
@@ -121,7 +135,18 @@ export default function BookingInfoPage() {
 
   return (
     <>
+      {notification && (
+        <>
+          {console.log("Rendering Notification med:", notification)}
+          <Notification
+            indhold={notification.message}
+            farve={notification.farve}
+            vedLuk={() => setNotification(null)}
+          />
+        </>
+      )}
       <BookingDetails />
+
       <section className="mt-8 w-full flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-x-10">
         <h2 className="font-molend text-xl md:col-span-2">
           Personlige oplysninger
@@ -131,8 +156,14 @@ export default function BookingInfoPage() {
           <>
             <div className="flex flex-col w-full ">
               <p className="my-3">Log ind og optjen rabatpoint!</p>
-              <CTAButton text="Log ind med Google"></CTAButton>
-              <CTAButton text="Log ind med FaceBook"></CTAButton>
+              <CTAButton
+                text="Log ind med Google"
+                onClick={handleLoginClick}
+              ></CTAButton>
+              <CTAButton
+                text="Log ind med FaceBook"
+                onClick={handleLoginClick}
+              ></CTAButton>
             </div>
             <div>
               <p className="text-center my-3 md:text-left">Ingen konto?</p>
