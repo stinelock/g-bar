@@ -12,8 +12,6 @@ export default function BookingSquareGrid({ page }) {
 
     localStorage.setItem("booking", JSON.stringify(updatedBooking));
 
-    console.log(`Selected ${page}:`, value.value);
-
     if (page === "guests") {
       router.push("/booking/date");
     } else if (page === "time") {
@@ -33,7 +31,6 @@ export default function BookingSquareGrid({ page }) {
       { key: 9, value: 9 },
       { key: 10, value: 10 },
     ];
-    console.log("Rendering BookingSquareGrid for guests");
 
     return (
       <div className="grid grid-cols-3 gap-8 w-full max-w-lg self-center md:max-w-md">

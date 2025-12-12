@@ -13,7 +13,7 @@ export default function NavBar() {
   }
 
   return (
-    <header className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky z-10">
+    <header className="bg-dark-grey grid grid-cols-3 p-5 w-screen sticky z-10 md:px-10">
       <Image src="/img/avatar.png" alt="profil menu" width="30" height="30" />
       <Link href="/" className="col-start-2">
         <Image

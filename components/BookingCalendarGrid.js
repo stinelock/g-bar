@@ -58,8 +58,6 @@ export default function BookingCalendarGrid({
         const day = weekdays[fullDate.getDay()];
         const capacity = dateCapacities[formattedDate]?.capacity || 0;
 
-        console.log(`Date: ${formattedDate}, Capacity: ${capacity}`);
-
         return (
           <DateSquare
             key={index}
