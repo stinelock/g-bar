@@ -146,20 +146,22 @@ export default function BookingInfoPage() {
             </div>
           </>
         ) : (
-          <>
-            <div className="flex flex-row items-center my-5">
+          <div className="col-span-2">
+            <div
+              className="flex flex-row items-center my-5 cursor-pointer"
+              onClick={() => setViewForm(false)}
+            >
               <Image
                 src="/img/arrow_back_white.png"
                 alt="Tilbage"
                 width="30"
                 height="30"
-                onClick={() => setViewForm(false)}
                 style={{ cursor: "pointer" }}
               />
               <p>Skift til log ind</p>
             </div>
             <BookingForm action={handleConfirm} />
-          </>
+          </div>
         )}
       </section>
     </>
