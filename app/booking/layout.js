@@ -12,7 +12,7 @@ export default function Layout({ children }) {
       <BookingHeader />
       <BookingNav />
       <main className="z-1">{children}</main>
-      <PreviousButton />
+      <PreviousButton text="Forrige" />
     </section>
   );
 }
