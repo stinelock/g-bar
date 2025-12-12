@@ -63,7 +63,7 @@ export default async function BookingConfirmationPage({ searchParams }) {
       </div>
       <BookingConfirmation bookingData={bookingData} />
     
-     <PreviousButton text="Tilbage til forsiden" href="/"/>
+     <PreviousButton text="Tilbage til forsiden" href="/" isConfirmationPage/>
     </section>
   );
 }
