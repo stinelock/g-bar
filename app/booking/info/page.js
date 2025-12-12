@@ -146,7 +146,7 @@ export default function BookingInfoPage() {
             </div>
           </>
         ) : (
-          <div className="col-span-2">
+          <div className="col-span-2" s>
             <div
               className="flex flex-row items-center my-5 cursor-pointer"
               onClick={() => setViewForm(false)}
