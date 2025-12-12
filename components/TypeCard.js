@@ -13,7 +13,7 @@ export default function TypeCard({ type, onClick }) {
           className="w-full h-auto object-fill object-center"
         ></Image>
       </div>
-      <h2 className="text-black text-2xl md:text-2xl">{type.name}</h2>
+      <h2 className="text-black text-2xl md:text-2xl font-molend">{type.name}</h2>
       <div className="flex flex-row gap-4 items-center">
         <Image
           src={type.icon}

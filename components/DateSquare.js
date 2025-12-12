@@ -17,7 +17,7 @@ export default function DateSquare({ date, day, onClick, fullDate, capacity, sel
 
   return (
     <div
-      className={`h-12 w-auto aspect-square ${
+      className={`h-12 w-auto font-molend aspect-square ${
         isClosed || isPastDate
           ? "text-black bg-white opacity-30"
           : isFullyBooked

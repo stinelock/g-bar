@@ -90,7 +90,7 @@ export default function BookingCalendar({ dateCapacities }) {
             onClick={handlePreviousMonth}
           ></Image>
         </span>
-        <h2 className="text-3xl">{`${currentMonth} ${currentYear}`}</h2>
+        <h2 className="text-2xl font-molend md:text-3xl">{`${currentMonth} ${currentYear}`}</h2>
         <span>
           <Image
             src="/img/arrow_forward_white.png"
