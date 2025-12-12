@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function BackgroundImage() {
  return (
-   <div className="w-screen h-full absolute top-15 overflow-hidden bottom-0 z-0 md:absolute md:h-5/6 md:w-auto md:right-30 md:-bottom-30">
+   <div className="w-screen h-[1000px] absolute top-15 overflow-hidden bottom-0 z-0 md:absolute md:h-5/6 md:w-auto md:right-30 md:-bottom-30">
      <Image
        src="/img/bg-drink.png"
        alt="baggrund"
