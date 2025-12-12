@@ -6,25 +6,25 @@ import Link from "next/link";
 export default function PreviousButton({ text, href, isConfirmationPage }) {
   const currentPath = usePathname();
 
-  if (!href){
-switch (currentPath) {
-  case "/booking":
-    return null;
-  case "/booking/guests":
-    href = "/booking";
-    break;
-  case "/booking/date":
-    href = "/booking/guests";
-    break;
-  case "/booking/time":
-    href = "/booking/date";
-    break;
-  case "/booking/info":
-    href = "/booking/time";
-    break;
-  default:
-    return null;
-}
+  if (!href) {
+    switch (currentPath) {
+      case "/booking":
+        return null;
+      case "/booking/guests":
+        href = "/booking";
+        break;
+      case "/booking/date":
+        href = "/booking/guests";
+        break;
+      case "/booking/time":
+        href = "/booking/date";
+        break;
+      case "/booking/info":
+        href = "/booking/time";
+        break;
+      default:
+        return null;
+    }
   }
 
   return (

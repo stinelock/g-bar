@@ -88,10 +88,7 @@ export default function FormPost({ action }) {
           className="aspect-square w-8 accent-dark-purple"
           onChange={handleCheckboxChange}
         />
-        <label htmlFor="confirmationmail">
-          {" "}
-          Jeg ønsker bekræftelse på mail
-        </label>
+        <label htmlFor="confirmationmail">Jeg ønsker bekræftelse på mail</label>
       </div>
 
       <div>
