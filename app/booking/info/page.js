@@ -122,22 +122,28 @@ export default function BookingInfoPage() {
   return (
     <>
       <BookingDetails />
-      <section className="mt-8">
-        <h2>Personlige oplysninger</h2>
+      <section className="mt-8 w-full flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-x-10">
+        <h2 className="font-molend text-xl md:col-span-2">
+          Personlige oplysninger
+        </h2>
 
         {!viewForm ? (
           <>
-            <p>Log ind og optjen point til rabatter!</p>
-            <CTAButton text="Log ind med Google"></CTAButton>
-            <CTAButton text="Log ind med FaceBook"></CTAButton>
-            <p>Ingen konto?</p>
-            <button
-              className="px-6 py-3 border border-white"
-              onClick={handleViewForm}
-            >
-              {" "}
-              Fortsæt som gæst
-            </button>
+            <div className="md:w-full md:flex md:flex-col ">
+              <p className="my-3">Log ind og optjen rabatpoint!</p>
+              <CTAButton text="Log ind med Google"></CTAButton>
+              <CTAButton text="Log ind med FaceBook"></CTAButton>
+            </div>
+            <div>
+              <p className="text-center my-3 md:text-left">Ingen konto?</p>
+              <button
+                className="px-6 py-3 bg-white text-black w-full font-bold"
+                onClick={handleViewForm}
+              >
+                {" "}
+                Fortsæt som gæst
+              </button>
+            </div>
           </>
         ) : (
           <>
