@@ -20,13 +20,13 @@ export default function BookingBackgroundImage() {
   }
 
   return (
-    <div className="w-screen h-screen overflow-hidden fixed left-0 bottom-0 z-0">
+    <div className="w-screen h-screen overflow-hidden fixed bottom-0 z-0 md:absolute md:h-5/6 md:w-auto md:right-30 md:-bottom-30">
       <Image
         src={currentImage}
         alt="dansende silhouette"
         width="100"
         height="100"
-        className="z-0 opacity-10 top-30 relative w-screen md:top-32 md:left-16"
+        className="z-0 opacity-10 top-30 relative w-screen md:w-auto md:h-full md:top-0"
       />
     </div>
   );
