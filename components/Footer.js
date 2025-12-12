@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="grid sm:grid-rows-2 gap-5 mt-10 relative bottom-0 bg-dark-grey w-screen h-80 py-8 px-20 md:grid md:grid-cols-2 md:grid-rows-none md:h-55 md:px-40">
+    <footer className="grid sm:grid-rows-2 gap-5 mt-10 absolute bottom-0 bg-dark-grey w-screen h-80 py-8 px-20 md:grid md:grid-cols-2 md:grid-rows-none md:h-55 md:px-40">
       <div className="flex flex-col justify-between md:justify-start md:gap-2">
         <Link href="/">
           <Image src="/img/logo.png" alt="G-bar" width="150" height="100"></Image>
