@@ -22,26 +22,25 @@ export default function BookingDetails({}) {
     }
 
   return (
-    <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <h2 className="md:col-span-2">Booking Oplysninger</h2>
-      <div>
-        <h3>Adresse</h3>
-        <p>G-bar</p>
-        <p>Skolegade 28, 8000 Aarhus</p>
+    <section className="grid grid-cols-2 gap-4 md:grid-cols-2">
+      <h2 className="font-molend text-xl col-span-2">Booking Oplysninger</h2>
+      <div className="col-span-2 md:col-span-1">
+        <h3 className="text-lg font-black">Adresse</h3>
+        <p>G-bar, Skolegade 28, 8000 Aarhus</p>
       </div>
-      <div>
-        <h3>Område</h3>
-        <p>{currentBooking.type}</p>
-      </div>
-      <div>
-        <h3>Antal gæster</h3>
-        <p>{currentBooking.guests} personer</p>
-      </div>
-      <div>
-        <h3>Dato & tid</h3>
+      <div className="col-span-2 md:col-span-1">
+        <h3 className="text-lg font-black">Dato & tid</h3>
         <p>
           {currentBooking.date} kl. {currentBooking.time}
         </p>
+      </div>
+      <div>
+        <h3 className="text-lg font-black">Antal gæster</h3>
+        <p>{currentBooking.guests} personer</p>
+      </div>
+      <div>
+        <h3 className="text-lg font-black">Område</h3>
+        <p>{currentBooking.type}</p>
       </div>
     </section>
   );

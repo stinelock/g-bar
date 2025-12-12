@@ -25,9 +25,7 @@ export default function BookingType() {
 
   const handleTypeSelect = (type) => {
     localStorage.setItem("booking", JSON.stringify( {type: type.name} ));
-
     router.push("/booking/guests");
-    console.log("Selected type:", type.name);
   };
 
   return (
