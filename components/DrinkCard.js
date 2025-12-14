@@ -1,4 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function DrinkCard({ drink, SeMere, TilføjTilKurv }) {
+  const router = useRouter();
+
   return (
     <div className="border rounded p-4 bg-white shadow text-black">
       <img
@@ -16,7 +22,7 @@ export default function DrinkCard({ drink, SeMere, TilføjTilKurv }) {
       <div className="flex flex-col">
         <button
           className="text-black-600 underline w-32 self-start"
-          onClick={() => SeMere(drink)}
+          onClick={() => router.push(`/drinks/${drink.id}`)}
         >
           Se mere -&gt;
         </button>

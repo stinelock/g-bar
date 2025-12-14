@@ -2,6 +2,7 @@
 
 import Cart from "@/components/Cart";
 import { useState, useEffect } from "react";
+import PreviousButton from "@/components/PreviousButton";
 
 export default function DrinksCheckoutPage() {
   const [kurv, setKurv] = useState([]);
@@ -12,6 +13,7 @@ export default function DrinksCheckoutPage() {
   useEffect(() => {
     let gemtKurv = localStorage.getItem("kurv");
     if (gemtKurv) {
+      //eslint-disable-next-line
       setKurv(JSON.parse(gemtKurv));
     }
     setkurvenErTom(false);
@@ -48,6 +50,7 @@ export default function DrinksCheckoutPage() {
     return (
       <>
         <main>
+          <PreviousButton />
           <h1>Drinks Checkout page</h1>
           <Cart
             kurv={kurv}
@@ -61,10 +64,10 @@ export default function DrinksCheckoutPage() {
           {/*vælg betalingsmetode*/}
           <section className="pt-4">
             <h2
-              className="text-2xl mb-4 font-molend bg-white text-black flex justify-center p-4 "
+              className="text-xl mb-4 font-molend bg-white text-black flex justify-center p-4 "
               onClick={() => setBetalingÅben(true)}
             >
-              Vælg betalingsmetode
+              Vaelg betalingsmetode
             </h2>
             <div className="mt-4 pt-4">
               <p className="text-xl font-molend">

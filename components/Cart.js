@@ -1,7 +1,6 @@
 import Notification from "./Notification";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { pathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Cart({
   kurv,
@@ -14,6 +13,7 @@ export default function Cart({
 }) {
   const [notifikation, setNotifikation] = useState(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   // Group items by id and count quantity
   const gruppeAntal = kurv.reduce((acc, item) => {

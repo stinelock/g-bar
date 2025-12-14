@@ -118,50 +118,6 @@ export default function DrinksPage() {
           />
         ))}
       </section>
-      {valgteDrink && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg max-w-md w-full h-full text-black">
-            {" "}
-            {/* Drink detalje side*/}
-            <button
-              className="mt-4 px-4 py-2 bg-purple-600 text-white rounded"
-              onClick={() => setValgteDrink(null)}
-            >
-              ←
-            </button>
-            <img
-              src={valgteDrink.image}
-              alt={valgteDrink.name + " image"}
-              className="w-32 h-32 object-cover mb-2 rounded mx-auto"
-            />
-            <h2 className="text-xl font-bold mb-2">{valgteDrink.name}</h2>
-            <p className="mb-1">
-              <p className="mb-1">{valgteDrink.description}</p>
-              <strong>Pris:</strong> {valgteDrink.price} DKK
-            </p>
-            <p className="mb-1">
-              <strong>Størrelse:</strong> {valgteDrink.size}{" "}
-              {/* FJERN INDEN DEPLOY, KUN FOR AT JEG KAN SE HVILKEN INFO DER ER VIST */}
-            </p>
-            <p className="mb-1">
-              <strong>Ingredienser:</strong>{" "}
-              {/* FJERN INDEN DEPLOY, KUN FOR AT JEG KAN SE HVILKEN INFO DER ER VIST */}
-              {valgteDrink.ingredients.join(", ")}
-            </p>
-            <p className="mb-1">
-              <strong>Hovedingredienser:</strong>{" "}
-              {/* FJERN INDEN DEPLOY, KUN FOR AT JEG KAN SE HVILKEN INFO DER ER VIST */}
-              {valgteDrink.mainIngredients.join(", ")}
-            </p>
-            <button
-              className="mt-4 px-4 py-2 bg-purple-600 text-white rounded"
-              onClick={() => tilføjTilKurv(valgteDrink)}
-            >
-              Tilføj til kurv
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
