@@ -26,14 +26,14 @@ export default function NavLinks({ isOpen }) {
       <motion.ul
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: isOpen ? "400px" : 0, opacity: isOpen ? 1 : 0 }}
-        className="flex flex-col justify-center col-span-3 text-5xl md:hidden overflow-hidden"
+        className="flex flex-col justify-center col-span-3 text-4xl md:hidden overflow-hidden font-molend"
       >
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
             href="/booking"
             onClick={handleMenuClose}
             className={`font-medium transition-all hover:underline ${
-             isBookingPath ? "underline" : ""
+              isBookingPath ? "underline" : ""
             }`}
           >
             Book Bord
@@ -53,7 +53,7 @@ export default function NavLinks({ isOpen }) {
       </motion.ul>
 
       {/*Tablet/Desktop version*/}
-      <ul className="hidden md:flex md:flex-row md:justify-end md:self-end md:h-full md:items-center">
+      <ul className="hidden md:flex md:flex-row md:justify-end md:self-end md:h-full md:items-center font-molend">
         <li className="ml-6 md:mt-0 md:z-10">
           <Link
             href="/booking"
