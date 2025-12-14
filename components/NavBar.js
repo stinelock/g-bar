@@ -27,7 +27,7 @@ export default function NavBar() {
   function handleLogInClick(message) {
     setNotification({
       message: message,
-      farve: "bg-red-600",
+      farve: "bg-red-500",
     });
   }
 
