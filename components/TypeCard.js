@@ -22,7 +22,7 @@ export default function TypeCard({ type, onClick }) {
           height="30"
           className="w-auto h-8"
         ></Image>
-        <p className="text-black self-center"> Rygning tilladt</p>
+        <p className="text-black self-center"> {type.description}</p>
       </div>
     </div>
   );
