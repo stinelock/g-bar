@@ -11,6 +11,7 @@ export default function BookingBackgroundImage() {
     "/booking/date": "/img/silhouette3-w.png",
     "/booking/time": "/img/silhouette1-w.png",
     "/booking/info": "/img/silhouette2-w.png",
+    "/drinks/checkout": "/img/silhouette2-w.png",
   };
 
   const currentImage = routeToImageMap[pathname] || "/img/silhouette1-w.png";

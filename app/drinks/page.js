@@ -6,7 +6,7 @@ import { database } from "../firebaseConfig";
 import DrinkCard from "../../components/DrinkCard";
 import Cart from "../../components/Cart";
 import Notification from "../../components/Notification";
-import Filter from "../../components/filter";
+import Filter from "../../components/Filter";
 
 export default function DrinksPage() {
   const [drinks, setDrinks] = useState([]);

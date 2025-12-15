@@ -2,7 +2,6 @@ import Link from "next/link";
 import { motion } from "motion/react";
 
 export default function ProfileMenu({ isOpen, onNotification }) {
-
   function handleMenuClose() {
     setisOpen(false);
   }
@@ -25,7 +24,7 @@ export default function ProfileMenu({ isOpen, onNotification }) {
             onNotification("Du kan desværre ikke logge ind lige nu.")
           }
         >
-          Logo ind
+          Log ind
         </li>
         <li
           className="ml-6 mt-10 md:mt-0 md:z-10 font-medium transition-all hover:underline"

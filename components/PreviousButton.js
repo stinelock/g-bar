@@ -22,9 +22,6 @@ export default function PreviousButton({ text, href, isConfirmationPage }) {
       case "/booking/info":
         href = "/booking/time";
         break;
-      case "/drinks/checkout":
-        href = "/drinks";
-        break;
       default:
         return null;
     }

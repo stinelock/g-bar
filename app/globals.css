@@ -5,7 +5,7 @@
     font-family: "molend", sans-serif;
   }
   .font-helvetica {
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: "helvetica", sans-serif;
   }
 }
 
@@ -40,16 +40,28 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translate(-50%, -20px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
   }
 }
 
+@keyframes error-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-10px);
+  }
+  40%,
+  80% {
+    transform: translateX(10px);
+  }
+}
 .animate-fade-in {
-  animation: fade-in 0.3s ease-out;
+  animation: fade-in 0.5s ease-out;
 }
 
 @media (prefers-color-scheme: dark) {
