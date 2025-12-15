@@ -1,4 +1,12 @@
-export default function DateSquare({ date, day, onClick, fullDate, capacity, selectedGuests, formattedDate }) {
+export default function DateSquare({
+  date,
+  day,
+  onClick,
+  fullDate,
+  capacity,
+  selectedGuests,
+  formattedDate,
+}) {
   const closedDays = ["Søndag", "Mandag", "Tirsdag", "Onsdag"];
 
   const isClosed = closedDays.includes(day);
