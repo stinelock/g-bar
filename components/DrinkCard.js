@@ -17,7 +17,7 @@ export default function DrinkCard({ drink, SeMere, TilføjTilKurv }) {
           <h2 className="text-base md:text-lg font-molend truncate w-full">
             {drink.name}
           </h2>
-          <p className="mb-1 text-xs truncate w-full">
+          <p className="mb-1 text-xs w-full font-helvetica font-light">
             {drink.mainIngredients.join(" - ")}
           </p>
           <button
