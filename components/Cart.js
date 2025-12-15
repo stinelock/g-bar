@@ -15,18 +15,18 @@ export default function Cart({
   const router = useRouter();
   const pathname = usePathname();
 
-  // Group items by id and count quantity
+  // Tilføj antal til hver vare i kurven
   const gruppeAntal = kurv.reduce((acc, item) => {
     const found = acc.find((i) => i.id === item.id);
     if (found) {
-      found.quantity += 1;
+      found.quantity += item.quantity || 1;
     } else {
-      acc.push({ ...item, quantity: 1 });
+      acc.push({ ...item, quantity: item.quantity || 1 });
     }
     return acc;
   }, []);
 
-  // Add one more of an item
+  // Tilføj en vare til kurven
   function tilføjTilKurv(id) {
     const item = kurv.find((i) => i.id === id);
     if (item) {
@@ -36,6 +36,7 @@ export default function Cart({
     }
   }
 
+  // Djern en vare fra kurven
   function fjernFraKurv(id) {
     const idx = kurv.findIndex((i) => i.id === id);
     if (idx !== -1) {
@@ -80,7 +81,7 @@ export default function Cart({
     );
   } else
     return (
-      <section className="border rounded p-4 bg-white text-black">
+      <>
         {notifikation && (
           <Notification
             indhold={notifikation.indhold}
@@ -89,17 +90,35 @@ export default function Cart({
           />
         )}
 
-        {/*Kurv knap*/}
+        {/*kurv knap*/}
         <button
-          className="bg-purple-600 text-white rounded px-4 py-2 w-full flex justify-between items-center"
-          onClick={() => setVisKurv(!visKurv)}
+          className="fixed bottom-8 right-8 w-16 h-16 bg-light-purple text-white rounded-full shadow-lg flex items-center justify-center z-40"
+          onClick={() => setVisKurv(true)}
         >
-          Kurven <div className="bg-dark-purple rounded w-5">{kurv.length}</div>
+          <img src="/img/cart.png" alt="cart" className="w-8 h-8" />
+          {kurv.length > 0 && (
+            <span className="absolute -top-1 -right-1 bg-dark-purple text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+              {kurv.length}
+            </span>
+          )}
         </button>
-        {/*Kurv åbnet*/}
+
+        {/*Kurv pop up*/}
         {visKurv && (
-          <section className="">
-            <div className="mt-4 mb-2">
+          <div
+            className="fixed inset-0 backdrop-blur-sm bg-black/30 z-50 flex items-center justify-center p-4"
+            onClick={() => setVisKurv(false)}
+          >
+            <div
+              className="bg-white rounded-tr-[30px] rounded-bl-[30px] shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto p-6 text-black relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-4 right-4 text-3xl text-gray-600 hover:text-gray-900"
+                onClick={() => setVisKurv(false)}
+              >
+                ×
+              </button>
               <h2 className="text-2xl mb-4 font-molend">Din Kurv</h2>
               {gruppeAntal.length === 0 ? (
                 <p>Kurven er tom</p>
@@ -109,30 +128,28 @@ export default function Cart({
                     {gruppeAntal.map((item) => (
                       <li
                         key={item.id}
-                        className="mb-2 pb-2 flex justify-between items-center"
+                        className="mb-4 pb-4 border-b flex justify-between items-center"
                       >
-                        <div>
+                        <div className="flex flex-col font-helvetica">
                           <p className="font-bold">{item.name}</p>
-                          <p className="text-sm font-semibold">
-                            {item.price} Kr
-                          </p>
+                          <p className="text-sm">{item.price} Kr</p>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 font-helvetica">
                           <button
-                            className="bg-gray-200 px-2 rounded text-lg"
+                            className="bg-gray-300 px-2 rounded-full"
                             onClick={() => fjernFraKurv(item.id)}
                           >
                             -
                           </button>
                           <span className="font-bold">{item.quantity}</span>
                           <button
-                            className="bg-gray-200 px-2 rounded text-lg"
+                            className="bg-gray-300 px-2 rounded-full"
                             onClick={() => tilføjTilKurv(item.id)}
                           >
                             +
                           </button>
                           <button
-                            className="text-red-600 text-sm ml-2"
+                            className="text-red-600 font-bold text-sm ml-5"
                             onClick={() => fjernAlleFraKurv(item.id)}
                           >
                             Fjern
@@ -147,26 +164,17 @@ export default function Cart({
                       Total: {beregnPris()} DKK
                     </p>
                   </div>
-
-                  <button
-                    className="mt-2 px-4 py-2 bg-red-600 text-white rounded w-full"
-                    onClick={tømKurv}
-                  >
-                    Tøm kurv
-                  </button>
                 </>
               )}
               <button
-                className="mt-4 px-4 py-2 bg-gray-600 text-white rounded w-full"
-                onClick={() => {
-                  router.push("/drinks/checkout");
-                }}
+                className="mt-4 px-4 py-2 bg-light-purple text-white rounded w-full font-semibold"
+                onClick={() => router.push("/drinks/checkout")}
               >
                 Gå til betaling
               </button>
             </div>
-          </section>
+          </div>
         )}
-      </section>
+      </>
     );
 }
