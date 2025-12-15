@@ -86,7 +86,7 @@ export default function DrinksCheckoutPage() {
           <section className="pt-4 w-85 mx-auto">
             <div
               className={`text-xl mb-4 font-helvetica font-medium bg-white text-black flex justify-between p-4 ${
-                betalingsFejl ? "animate-[error-shake_0.5s_ease-in-out]" : ""
+                betalingsFejl ? "border-3 border-red-500" : ""
               }`}
               onClick={() => {
                 setBetalingÅben(true);
