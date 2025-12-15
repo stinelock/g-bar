@@ -72,7 +72,7 @@ export default function Cart({
               ordre
             </h2>
             <img
-              className="w-6 h-auto ml-auto mb-4 cursor-pointer"
+              className="w-6 h-auto ml-auto mb-4"
               src="/img/edit.png"
               onClick={() => {
                 console.log("rediger");
@@ -97,7 +97,7 @@ export default function Cart({
                     </div>
                     <div className="font-molend flex flex-row justify-between w-full">
                       <p>{item.name}</p>
-                      <p className="text-xl">{item.price} Kr</p>
+                      <p className="text-xl">{item.quantity * item.price} Kr</p>
                     </div>
                   </li>
                 ))}
@@ -107,12 +107,12 @@ export default function Cart({
         </section>
       ) : (
         <button
-          className="fixed bottom-8 right-8 w-16 h-16 bg-light-purple text-white rounded-full shadow-lg flex items-center justify-center z-40"
+          className="fixed bottom-8 right-8 w-16 h-16 bg-white rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.7)] flex items-center justify-center z-40"
           onClick={() => setVisKurv(true)}
         >
           <img src="/img/cart.png" alt="cart" className="w-8 h-8" />
           {kurv.length > 0 && (
-            <span className="absolute -top-1 -right-1 bg-dark-purple text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 bg-dark-purple text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-helvetica ">
               {kurv.length}
             </span>
           )}
