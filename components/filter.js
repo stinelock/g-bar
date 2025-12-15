@@ -1,8 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 export default function Filter({ alleTags, valgteTags, setValgteTags }) {
+  const starterTags = ["cocktail", "øl", "alkoholfri", "shots"];
+  const [seFilter, setSeFilter] = useState(false);
+
   function handleTagChange(tag) {
     if (valgteTags.includes(tag)) {
       setValgteTags(valgteTags.filter((t) => t !== tag));
@@ -10,7 +13,6 @@ export default function Filter({ alleTags, valgteTags, setValgteTags }) {
       setValgteTags([...valgteTags, tag]);
     }
   }
-  const starterTags = ["cocktail", "øl", "alkoholfri", "shots"];
 
   const sortedTags = [...alleTags].sort((a, b) => {
     function sortValue(tag) {
@@ -22,16 +24,49 @@ export default function Filter({ alleTags, valgteTags, setValgteTags }) {
     return diff !== 0 ? diff : a.localeCompare(b);
   });
 
+  function toggleFilter() {
+    if (seFilter) {
+      setSeFilter(false);
+      console.log("filter skjult");
+    } else {
+      setSeFilter(true);
+      console.log("filter vist");
+    }
+  }
+
   return (
     <div className="mb-4">
-      <h3 className="font-bold mb-2">Filter med tags</h3>
-      <div
-        className="flex gap-2 overflow-x-auto pb-2"
-        style={{
-          WebkitOverflowScrolling: "touch",
-          maxWidth: "100%",
-        }}
+      <h3
+        className="underline text-right mb-3 font-semibold"
+        onClick={toggleFilter}
       >
+        Filtrer
+      </h3>
+      {/* Filter indhold */}
+      {seFilter && (
+        <div className="bg-white text-black p-6 mb-4 rounded-tr-[30px] rounded-bl-[30px]">
+          <div className="flex flex-wrap gap-2">
+            {sortedTags.map((tag) => {
+              const selected = valgteTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => handleTagChange(tag)}
+                  className={`rounded-tl-[10px] rounded-br-[10px] whitespace-nowrap border-[1.5px] border-black font-medium font-helvetica px-3 py-1 ${
+                    selected
+                      ? "bg-light-purple text-white border-light-purple"
+                      : "bg-transparent text-black"
+                  }`}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      <div className="flex gap-2 overflow-x-auto pb-2">
         {sortedTags.map((tag) => {
           const selected = valgteTags.includes(tag);
           return (
@@ -39,10 +74,8 @@ export default function Filter({ alleTags, valgteTags, setValgteTags }) {
               key={tag}
               type="button"
               onClick={() => handleTagChange(tag)}
-              className={`rounded-full py-1 whitespace-nowrap border font-semibold focus:outline-none ${
-                selected
-                  ? "bg-purple-600 text-white border-purple-600"
-                  : "bg-white text-purple-600 border-purple-600"
+              className={`rounded-tl-[10px] rounded-br-[10px] whitespace-nowrap border-[1.5px] border-white font-medium font-helvetica ${
+                selected ? "bg-white text-black" : "bg-transparent text-white"
               }`}
               style={{ minWidth: 80 }}
             >
