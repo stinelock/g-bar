@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function BookingConfirmation({ bookingData }) {
   return (
-    <div className="w-full h-auto p-8 bg-white text-black flex flex-col md:px-38 md:py-10">
+    <div className="w-full h-auto p-8 bg-white text-black rounded-tr-[30] rounded-bl-[30] flex flex-col md:px-38 md:py-10">
       <h1 className="text-black text-center text-3xl">dit bord er booket!</h1>
       <p>
         {bookingData.date} kl. {bookingData.time}
