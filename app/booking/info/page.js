@@ -154,7 +154,7 @@ export default function BookingInfoPage() {
 
         {!viewForm ? (
           <>
-            <div className="flex flex-col w-full ">
+            <div className="flex flex-col w-full">
               <p className="my-3">Log ind og optjen rabatpoint!</p>
               <CTAButton
                 text="Log ind med Google"
