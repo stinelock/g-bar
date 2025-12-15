@@ -19,7 +19,7 @@ export default function FormPost({ action }) {
   return (
     // Form uses Server Action passed as prop
     <form action={action} className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div className="md:flex md:flex-col">
+      <div className="flex flex-col">
         <label htmlFor="name">Navn</label>
         <input
           id="name"
@@ -31,7 +31,7 @@ export default function FormPost({ action }) {
           required
         />
       </div>
-      <div className="md:flex md:flex-col">
+      <div className="flex flex-col">
         <label htmlFor="phone">Mobil</label>
         <input
           type="tel"
@@ -45,7 +45,7 @@ export default function FormPost({ action }) {
           required={smsChecked}
         />
       </div>
-      <div className="md:flex md:flex-col">
+      <div className="flex flex-col">
         <label htmlFor="email">E-mail</label>
         <input
           type="email"
@@ -57,7 +57,7 @@ export default function FormPost({ action }) {
           required={emailChecked}
         />
       </div>
-      <div className="md:flex md:flex-col">
+      <div className="flex flex-col">
         <label htmlFor="comments">Kommentarer</label>
         <input
           type="text"

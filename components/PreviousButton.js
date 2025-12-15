@@ -30,7 +30,7 @@ export default function PreviousButton({ text, href, isConfirmationPage }) {
   return (
     <Link
       href={href}
-      className={`flex justify-center p-2 mt-4 border md:mt-10 border-white ${
+      className={`flex justify-center p-2 mt-4 border md:mt-10 border-white uppercase ${
         isConfirmationPage ? "w-full" : "w-30"
       }`}
     >

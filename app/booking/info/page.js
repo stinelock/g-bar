@@ -168,7 +168,7 @@ export default function BookingInfoPage() {
             <div>
               <p className="text-center my-3 md:text-left">Ingen konto?</p>
               <button
-                className="px-6 py-3 bg-white text-black w-full font-bold"
+                className="px-6 py-3 bg-white text-black w-full font-bold uppercase"
                 onClick={handleViewForm}
               >
                 {" "}
