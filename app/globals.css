@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "molend";
+  src: url("/fonts/molend/molendregular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "molend";
+  src: url("/fonts/molend/molendbold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "helvetica";
+  src: url("/fonts/helvetica/HelveticaNeueRoman.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "helvetica";
+  src: url("/fonts/helvetica/HelveticaNeueBold.otf") format("opentype");
+}
+
 @layer utilities {
   .font-molend {
     font-family: "molend", sans-serif;
