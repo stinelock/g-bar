@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default async function BookingConfirmationPage({ searchParams }) {
   const params = await searchParams;
-  const bookingId = params?.bookingId; // Fjern "await"
+  const bookingId = params?.bookingId;
 
   console.log("Booking ID from searchParams:", bookingId);
 
