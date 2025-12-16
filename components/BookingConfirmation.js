@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function BookingConfirmation({ bookingData }) {
   return (
     <div className="w-full h-auto p-8 bg-white text-black rounded-tr-[30] rounded-bl-[30] flex flex-col md:px-38 md:py-10">
-      <h1 className="text-black text-center text-3xl">dit bord er booket!</h1>
+      <h1 className="text-black text-center text-3xl">Dit bord er booket!</h1>
       <p>
         {bookingData.date} kl. {bookingData.time}
       </p>
@@ -23,7 +23,7 @@ export default function BookingConfirmation({ bookingData }) {
         <p className="text-left">{bookingData.type}</p>
         <p className="font-bold">Antal gæster:</p>
         <p className="text-left">{bookingData.guests}</p>
-        {bookingData.comment ? <p>Kommentarer: bookingData.comment</p> : null}
+        {bookingData.comment ? <p>Kommentarer: {bookingData.comment}</p> : null}
         <div className="col-span-2 text-xs mt-8">
           <p>Medbring relevant ID</p>
           <p>Det er forbudt at medbringe væske og umarkeret medicin.</p>
