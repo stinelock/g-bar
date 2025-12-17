@@ -61,7 +61,7 @@ export default function DrinksDetailPage() {
       )}
       {valgteDrink && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg max-w-md w-full h-full text-black flex flex-col">
+          <div className="bg-[#ffffff] p-6 rounded shadow-lg max-w-md w-full h-full text-black flex flex-col">
             <img
               src="/img/arrow-left.png"
               alt="tilbage"

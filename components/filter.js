@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 export default function Filter({ alleTags, valgteTags, setValgteTags }) {
-  const starterTags = ["cocktail", "øl", "alkoholfri", "shots"];
+  const starterTags = ["Cocktail", "Øl", "Alkoholfri", "Shots"];
   const [seFilter, setSeFilter] = useState(false);
 
   function handleTagChange(tag) {
