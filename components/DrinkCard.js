@@ -6,11 +6,11 @@ export default function DrinkCard({ drink, SeMere, TilføjTilKurv }) {
   const router = useRouter();
 
   return (
-    <div className="border rounded p-4 bg-white shadow text-black flex flex-row bg-white rounded-tr-[30px] rounded-bl-[30px] shadow-xl w-full">
+    <div className="p-4 bg-[#ffffff] text-black flex flex-row rounded-tr-[30px] rounded-bl-[30px] shadow-xl w-full">
       <img
         src={drink.image}
         alt={drink.name + " image"}
-        className="w-24 h-24 object-cover rounded flex-shrink-0"
+        className="w-28 h-28 object-cover rounded flex-shrink-0"
       />
       <div className="flex flex-col font-helvetica ml-4 flex-1 justify-between min-w-0">
         <div className="flex flex-col items-start min-w-0">

@@ -9,7 +9,7 @@
   }
 }
 
-@theme inline {
+@theme {
   --color-black: #0b0b0b;
   --color-white: #eeeeee;
   --color-dark-grey: #1e1e1e;
